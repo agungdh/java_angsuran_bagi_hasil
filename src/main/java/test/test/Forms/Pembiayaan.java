@@ -35,10 +35,12 @@ import net.sf.jasperreports.view.JasperViewer;
 import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.DBException;
 import org.javalite.activejdbc.LazyList;
+import test.test.Helpers.ADHhelper;
 import test.test.Models.JabatanModel;
 
 import test.test.Models.GajiModel;
 import test.test.Models.KaryawanModel;
+import test.test.Models.PembiayaanModel;
 import test.test.Reports.Config;
 
 /**
@@ -46,9 +48,6 @@ import test.test.Reports.Config;
  * @author user
  */
 public class Pembiayaan extends javax.swing.JFrame {
-    private List<Integer> comboPangkatGolID = new ArrayList<Integer>();
-    private int comboPangkatGolIndex;
-    private int selectedComboPangkatGolIndex;
     private DefaultTableModel model = new DefaultTableModel();
     private String ID;
     private String state;
@@ -86,19 +85,33 @@ public class Pembiayaan extends javax.swing.JFrame {
         }
     }
     
-    private void loadTableHelper(LazyList<JabatanModel> jabatans) {
+    private void loadTableHelper(LazyList<PembiayaanModel> pembiayaans) {
         model = new DefaultTableModel();
                 
         model.addColumn("#ID");
-        model.addColumn("Jabatan");
+        model.addColumn("No Pembiayaan");
+        model.addColumn("Nama");
+        model.addColumn("Tanggal");
+        model.addColumn("Plafon");
+        model.addColumn("Jatuh Tempo");
+        model.addColumn("Bagi Hasil");
+        model.addColumn("Pokok");
+        model.addColumn("Administrasi");
         
         Base.open();
         
         try {
-            for(JabatanModel jabatan : jabatans) {                
+            for(PembiayaanModel pembiayaan : pembiayaans) {                
                 model.addRow(new Object[]{
-                    jabatan.getId(),
-                    jabatan.getString("jabatan")
+                    pembiayaan.getId(),
+                    pembiayaan.getString("no_pembiayaan"),
+                    pembiayaan.getString("nama"),
+                    ADHhelper.tanggalIndo(pembiayaan.getString("tanggal")),
+                    ADHhelper.rupiah(pembiayaan.getInteger("plafon")),
+                    ADHhelper.tanggalIndo(pembiayaan.getString("jatuh_tempo")),
+                    ADHhelper.rupiah(pembiayaan.getInteger("basil")),
+                    ADHhelper.rupiah(pembiayaan.getInteger("pokok")),
+                    ADHhelper.rupiah(pembiayaan.getInteger("administrasi"))
                 });
             }
         } catch (Exception e) {
@@ -117,18 +130,18 @@ public class Pembiayaan extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<JabatanModel> jabatans = JabatanModel.findAll();
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findAll();
         Base.close();
         
-        loadTableHelper(jabatans);
+        loadTableHelper(pembiayaans);
     }
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<JabatanModel> jabatans = JabatanModel.where("jabatan like ?", '%' + cari + '%');
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan like ? OR nama like ?", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
-        loadTableHelper(jabatans);
+        loadTableHelper(pembiayaans);
     }
 
     
@@ -405,11 +418,11 @@ public class Pembiayaan extends javax.swing.JFrame {
                                 .addComponent(No)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(LabelCari, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                                .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ScrollPane))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

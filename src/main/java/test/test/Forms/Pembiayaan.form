@@ -78,12 +78,12 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabelCari" pref="78" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="LabelCari" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TextCari" min="-2" pref="303" max="-2" attributes="0"/>
+                              <Component id="TextCari" min="-2" pref="894" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="ScrollPane" pref="0" max="32767" attributes="0"/>
+                          <Component id="ScrollPane" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

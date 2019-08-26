@@ -6,6 +6,11 @@
 package test.test.Helpers;
 
 import static java.lang.System.out;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -20,6 +25,28 @@ public class ADHhelper {
         }
     }
     
+    public static String tanggalIndo(String tanggalParam) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date tanggal = format.parse(tanggalParam);
+
+        SimpleDateFormat parsedFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String parsedtanggal = parsedFormat.format(tanggal);
+        
+        return parsedtanggal;
+    }
+    
+    public static String rupiah(int uang) {
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols formatRp = new DecimalFormatSymbols();
+
+        formatRp.setCurrencySymbol("Rp. ");
+        formatRp.setMonetaryDecimalSeparator(',');
+        formatRp.setGroupingSeparator('.');
+        
+        kursIndonesia.setDecimalFormatSymbols(formatRp);
+        
+        return kursIndonesia.format(uang);
+    }
     public static void d(String string) {
         out.println("===========================================");
         out.println(string);
