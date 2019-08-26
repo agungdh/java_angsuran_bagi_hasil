@@ -157,7 +157,7 @@ public class Angsuran extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT * FROM pembiayaan p, angsuran a WHERE a.id_pembiayaan = p.id AND (p.no_pembiayaan like ? OR p.nama like ?)", '%' + cari + '%', '%' + cari + '%');
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT * FROM pembiayaan p, angsuran a WHERE a.id_pembiayaan = p.id AND (p.no_pembiayaan like ? OR a.nama like ?)", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
         loadTableHelper(angsurans);
