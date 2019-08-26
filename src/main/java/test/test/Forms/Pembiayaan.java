@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +22,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -147,9 +150,9 @@ public class Pembiayaan extends javax.swing.JFrame {
     
     private void hapusData() {
         Base.open();
-        JabatanModel jabatan = JabatanModel.findById(ID);
+        PembiayaanModel pembiayaa = PembiayaanModel.findById(ID);
         try {
-            jabatan.delete();
+            pembiayaa.delete();
         } catch (DBException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -175,9 +178,16 @@ public class Pembiayaan extends javax.swing.JFrame {
     private void tambahData() {
         Base.open();
         try {
-            JabatanModel jabatan = new JabatanModel();
-            jabatan.set("jabatan", No.getText());
-            jabatan.save();
+            PembiayaanModel pembiayaan = new PembiayaanModel();
+            pembiayaan.set("no_pembiayaan", No.getText());
+            pembiayaan.set("nama", Nama.getText());
+            pembiayaan.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+            pembiayaan.set("plafon", Plafon.getValue());
+            pembiayaan.set("jatuh_tempo", ADHhelper.parseTanggal(Jatuh.getDate()));
+            pembiayaan.set("basil", Bagi.getValue());
+            pembiayaan.set("pokok", Pokok.getValue());
+            pembiayaan.set("administrasi", Adm.getValue());
+            pembiayaan.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -187,9 +197,16 @@ public class Pembiayaan extends javax.swing.JFrame {
     private void ubahData() {
         Base.open();
         try {
-            JabatanModel jabatan = JabatanModel.findById(ID);
-            jabatan.set("jabatan", No.getText());
-            jabatan.save();
+            PembiayaanModel pembiayaan = PembiayaanModel.findById(ID);
+            pembiayaan.set("no_pembiayaan", No.getText());
+            pembiayaan.set("nama", Nama.getText());
+            pembiayaan.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+            pembiayaan.set("plafon", Plafon.getValue());
+            pembiayaan.set("jatuh_tempo", ADHhelper.parseTanggal(Jatuh.getDate()));
+            pembiayaan.set("basil", Bagi.getValue());
+            pembiayaan.set("pokok", Pokok.getValue());
+            pembiayaan.set("administrasi", Adm.getValue());
+            pembiayaan.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -495,10 +512,21 @@ public class Pembiayaan extends javax.swing.JFrame {
             ID = model.getValueAt(i, 0).toString();
 
             Base.open();
-            JabatanModel jabatan = JabatanModel.findById(ID);
+            PembiayaanModel pembiayaan = PembiayaanModel.findById(ID);
             Base.close();
 
-            No.setText(jabatan.getString("jabatan"));
+            No.setText(pembiayaan.getString("no_pembiayaan"));
+            Nama.setText(pembiayaan.getString("nama"));
+            try {
+                Tanggal.setDate(ADHhelper.getTanggalFromDB(pembiayaan.getString("tanggal")));
+                Jatuh.setDate(ADHhelper.getTanggalFromDB(pembiayaan.getString("jatuh_tempo")));
+            } catch (ParseException ex) {
+                Logger.getLogger(Pembiayaan.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Plafon.setValue(pembiayaan.getInteger("plafon"));
+            Bagi.setValue(pembiayaan.getInteger("basil"));
+            Pokok.setValue(pembiayaan.getInteger("pokok"));
+            Adm.setValue(pembiayaan.getInteger("administrasi"));
             setState("edit");
         }
     }//GEN-LAST:event_TablePegawaiMouseClicked
@@ -506,7 +534,13 @@ public class Pembiayaan extends javax.swing.JFrame {
     private void ButtonTambahUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTambahUbahActionPerformed
         if (state.equals("index")) {
             if (No.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form No Pembiayaan Masih Kosong !!!");
+            } else if (Nama.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Form Nama Masih Kosong !!!");
+            } else if (Tanggal.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
+            } else if (Jatuh.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Form Jatuh Tempo Masih Kosong !!!");
             } else {
                 tambahData();
                 resetForm();
@@ -514,7 +548,13 @@ public class Pembiayaan extends javax.swing.JFrame {
             }
         } else {
             if (No.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form No Pembiayaan Masih Kosong !!!");
+            } else if (Nama.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Form Nama Masih Kosong !!!");
+            } else if (Tanggal.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
+            } else if (Jatuh.getDate() == null) {
+                JOptionPane.showMessageDialog(null, "Form Jatuh Tempo Masih Kosong !!!");
             } else {
                 ubahData();
                 resetForm();

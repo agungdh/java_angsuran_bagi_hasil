@@ -6,6 +6,7 @@
 package test.test.Helpers;
 
 import static java.lang.System.out;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
@@ -23,6 +24,16 @@ public class ADHhelper {
         } else {
             d(string);
         }
+    }
+    
+    public static Date getTanggalFromDB(String tanggalParam) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.parse(tanggalParam);
+    }
+
+    public static String parseTanggal(Date tanggalParam) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(tanggalParam);
     }
     
     public static String tanggalIndo(String tanggalParam) throws ParseException {
