@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Pembiayaan"/>
+    <Property name="title" type="java.lang.String" value="Angsuran"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -37,28 +37,29 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="LabelCari4" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Plafon" max="32767" attributes="0"/>
+                              <Component id="Pokok" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="LabelCari3" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="Tanggal" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari2" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Nama" max="32767" attributes="0"/>
-                          </Group>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari1" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="No" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="LabelCari9" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Plafon1" max="32767" attributes="0"/>
+                              <Component id="Bagi" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelCari2" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="LabelCari1" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="Nama" max="32767" attributes="0"/>
+                                  <Component id="No" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -82,17 +83,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="TextCari" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LabelCari" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabelCari1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="No" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TextCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="ScrollPane" pref="185" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="LabelCari1" min="-2" max="-2" attributes="0"/>
+                          <Component id="No" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -107,17 +112,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="LabelCari4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Plafon" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Pokok" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="LabelCari9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Plafon1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Bagi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="ScrollPane" alignment="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -156,11 +160,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cari (No/Nama)"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="No">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCari1">
       <Properties>
@@ -296,14 +295,33 @@
         <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="Plafon">
+    <Component class="javax.swing.JSpinner" name="Pokok">
     </Component>
-    <Component class="javax.swing.JSpinner" name="Plafon1">
+    <Component class="javax.swing.JSpinner" name="Bagi">
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCari9">
       <Properties>
         <Property name="text" type="java.lang.String" value="Basil"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="No">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="NoItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NoActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

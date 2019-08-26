@@ -39,6 +39,7 @@ import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.DBException;
 import org.javalite.activejdbc.LazyList;
 import test.test.Helpers.ADHhelper;
+import test.test.Models.AngsuranModel;
 import test.test.Models.JabatanModel;
 
 import test.test.Models.GajiModel;
@@ -51,6 +52,10 @@ import test.test.Reports.Config;
  * @author user
  */
 public class Angsuran extends javax.swing.JFrame {
+    private List<Integer> comboPembiayaanID = new ArrayList<Integer>();
+    private int comboPembiayaanIndex;
+    private int selectedComboPembiayaanIndex;
+    
     private DefaultTableModel model = new DefaultTableModel();
     private String ID;
     private String state;
@@ -77,7 +82,23 @@ public class Angsuran extends javax.swing.JFrame {
             }
         });
         
+        loadComboBox();
+        
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    }
+    
+    public void loadComboBox() {
+        No.removeAllItems();
+        
+        Base.open();
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findAll();
+        
+        for(PembiayaanModel pembiayaan : pembiayaans) {
+            comboPembiayaanID.add(Integer.parseInt(pembiayaan.getString("id")));
+            No.addItem(pembiayaan.getString("no_pembiayaan"));
+        }
+
+        Base.close();
     }
     
     public void cari() {
@@ -88,33 +109,28 @@ public class Angsuran extends javax.swing.JFrame {
         }
     }
     
-    private void loadTableHelper(LazyList<PembiayaanModel> pembiayaans) {
+    private void loadTableHelper(LazyList<AngsuranModel> angsurans) {
         model = new DefaultTableModel();
                 
         model.addColumn("#ID");
         model.addColumn("No Pembiayaan");
         model.addColumn("Nama");
         model.addColumn("Tanggal");
-        model.addColumn("Plafon");
-        model.addColumn("Jatuh Tempo");
-        model.addColumn("Bagi Hasil");
-        model.addColumn("Pokok");
-        model.addColumn("Administrasi");
+        model.addColumn("Angsuran Pokok");
+        model.addColumn("Angsuran Bagi Hasil");
         
         Base.open();
         
         try {
-            for(PembiayaanModel pembiayaan : pembiayaans) {                
+            for(AngsuranModel angsuran : angsurans) {       
+                PembiayaanModel pembiayaan = angsuran.parent(PembiayaanModel.class);
                 model.addRow(new Object[]{
-                    pembiayaan.getId(),
+                    angsuran.getId(),
                     pembiayaan.getString("no_pembiayaan"),
-                    pembiayaan.getString("nama"),
-                    ADHhelper.tanggalIndo(pembiayaan.getString("tanggal")),
-                    ADHhelper.rupiah(pembiayaan.getInteger("plafon")),
-                    ADHhelper.tanggalIndo(pembiayaan.getString("jatuh_tempo")),
-                    ADHhelper.rupiah(pembiayaan.getInteger("basil")),
-                    ADHhelper.rupiah(pembiayaan.getInteger("pokok")),
-                    ADHhelper.rupiah(pembiayaan.getInteger("administrasi"))
+                    angsuran.getString("nama"),
+                    ADHhelper.tanggalIndo(angsuran.getString("tanggal")),
+                    ADHhelper.rupiah(angsuran.getInteger("pokok")),
+                    ADHhelper.rupiah(angsuran.getInteger("basil")),
                 });
             }
         } catch (Exception e) {
@@ -133,26 +149,26 @@ public class Angsuran extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findAll();
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findAll();
         Base.close();
         
-        loadTableHelper(pembiayaans);
+        loadTableHelper(angsurans);
     }
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan like ? OR nama like ?", '%' + cari + '%', '%' + cari + '%');
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT * FROM pembiayaan p, angsuran a WHERE a.id_pembiayaan = p.id AND (p.no_pembiayaan like ? OR p.nama like ?)", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
-        loadTableHelper(pembiayaans);
+        loadTableHelper(angsurans);
     }
 
     
     private void hapusData() {
         Base.open();
-        PembiayaanModel pembiayaa = PembiayaanModel.findById(ID);
+        AngsuranModel angsuran = AngsuranModel.findById(ID);
         try {
-            pembiayaa.delete();
+            angsuran.delete();
         } catch (DBException e) {
             JOptionPane.showMessageDialog(null, e.getLocalizedMessage());
         }
@@ -178,16 +194,13 @@ public class Angsuran extends javax.swing.JFrame {
     private void tambahData() {
         Base.open();
         try {
-            PembiayaanModel pembiayaan = new PembiayaanModel();
-            pembiayaan.set("no_pembiayaan", No.getText());
-            pembiayaan.set("nama", Nama.getText());
-            pembiayaan.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
-            pembiayaan.set("plafon", Plafon.getValue());
-            pembiayaan.set("jatuh_tempo", ADHhelper.parseTanggal(Jatuh.getDate()));
-            pembiayaan.set("basil", Bagi.getValue());
-            pembiayaan.set("pokok", Pokok.getValue());
-            pembiayaan.set("administrasi", Adm.getValue());
-            pembiayaan.save();
+            AngsuranModel angsuran = new AngsuranModel();
+            angsuran.set("id_pembiayaan", selectedComboPembiayaanIndex);
+            angsuran.set("nama", Nama.getText());
+            angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+            angsuran.set("basil", Bagi.getValue());
+            angsuran.set("pokok", Pokok.getValue());
+            angsuran.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -197,16 +210,13 @@ public class Angsuran extends javax.swing.JFrame {
     private void ubahData() {
         Base.open();
         try {
-            PembiayaanModel pembiayaan = PembiayaanModel.findById(ID);
-            pembiayaan.set("no_pembiayaan", No.getText());
-            pembiayaan.set("nama", Nama.getText());
-            pembiayaan.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
-            pembiayaan.set("plafon", Plafon.getValue());
-            pembiayaan.set("jatuh_tempo", ADHhelper.parseTanggal(Jatuh.getDate()));
-            pembiayaan.set("basil", Bagi.getValue());
-            pembiayaan.set("pokok", Pokok.getValue());
-            pembiayaan.set("administrasi", Adm.getValue());
-            pembiayaan.save();
+            AngsuranModel angsuran = AngsuranModel.findById(ID);
+            angsuran.set("id_pembiayaan", selectedComboPembiayaanIndex);
+            angsuran.set("nama", Nama.getText());
+            angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+            angsuran.set("basil", Bagi.getValue());
+            angsuran.set("pokok", Pokok.getValue());
+            angsuran.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -214,14 +224,11 @@ public class Angsuran extends javax.swing.JFrame {
     }
 
     private void resetForm() {
-        No.setText("");
+        No.setSelectedIndex(0);
         Nama.setText("");
-        Plafon.setValue(0);
-        Bagi.setValue(0);
         Pokok.setValue(0);
-        Adm.setValue(0);
+        Bagi.setValue(0);
         Tanggal.setDate(null);
-        Jatuh.setDate(null);
     }
 
     /**
@@ -237,7 +244,6 @@ public class Angsuran extends javax.swing.JFrame {
         TablePegawai = new javax.swing.JTable();
         TextCari = new javax.swing.JTextField();
         LabelCari = new javax.swing.JLabel();
-        No = new javax.swing.JTextField();
         LabelCari1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -250,12 +256,13 @@ public class Angsuran extends javax.swing.JFrame {
         LabelCari3 = new javax.swing.JLabel();
         LabelCari4 = new javax.swing.JLabel();
         Tanggal = new com.toedter.calendar.JDateChooser();
-        Plafon = new javax.swing.JSpinner();
-        Plafon1 = new javax.swing.JSpinner();
+        Pokok = new javax.swing.JSpinner();
+        Bagi = new javax.swing.JSpinner();
         LabelCari9 = new javax.swing.JLabel();
+        No = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Pembiayaan");
+        setTitle("Angsuran");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -286,12 +293,6 @@ public class Angsuran extends javax.swing.JFrame {
         });
 
         LabelCari.setText("Cari (No/Nama)");
-
-        No.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoActionPerformed(evt);
-            }
-        });
 
         LabelCari1.setText("No Pembiayaan");
 
@@ -380,6 +381,18 @@ public class Angsuran extends javax.swing.JFrame {
 
         LabelCari9.setText("Basil");
 
+        No.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        No.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NoItemStateChanged(evt);
+            }
+        });
+        No.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -393,24 +406,24 @@ public class Angsuran extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Plafon))
+                                .addComponent(Pokok))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(Tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LabelCari2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Nama))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LabelCari1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(No))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Plafon1)))
+                                .addComponent(Bagi))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelCari2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelCari1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Nama)
+                                    .addComponent(No, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -426,14 +439,17 @@ public class Angsuran extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabelCari))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCari))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LabelCari1)
                             .addComponent(No, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -447,14 +463,13 @@ public class Angsuran extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCari4)
-                            .addComponent(Plafon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Pokok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCari9)
-                            .addComponent(Plafon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Bagi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -479,49 +494,39 @@ public class Angsuran extends javax.swing.JFrame {
             ID = model.getValueAt(i, 0).toString();
 
             Base.open();
-            PembiayaanModel pembiayaan = PembiayaanModel.findById(ID);
+            AngsuranModel angsuran = AngsuranModel.findById(ID);
             Base.close();
-
-            No.setText(pembiayaan.getString("no_pembiayaan"));
-            Nama.setText(pembiayaan.getString("nama"));
+            
+            No.setSelectedIndex(comboPembiayaanID.indexOf(Integer.parseInt(angsuran.getString("id_pembiayaan"))));
+            Nama.setText(angsuran.getString("nama"));
             try {
-                Tanggal.setDate(ADHhelper.getTanggalFromDB(pembiayaan.getString("tanggal")));
-                Jatuh.setDate(ADHhelper.getTanggalFromDB(pembiayaan.getString("jatuh_tempo")));
+                Tanggal.setDate(ADHhelper.getTanggalFromDB(angsuran.getString("tanggal")));
             } catch (ParseException ex) {
                 Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Plafon.setValue(pembiayaan.getInteger("plafon"));
-            Bagi.setValue(pembiayaan.getInteger("basil"));
-            Pokok.setValue(pembiayaan.getInteger("pokok"));
-            Adm.setValue(pembiayaan.getInteger("administrasi"));
+            Pokok.setValue(angsuran.getInteger("pokok"));
+            Bagi.setValue(angsuran.getInteger("basil"));
+            
             setState("edit");
         }
     }//GEN-LAST:event_TablePegawaiMouseClicked
 
     private void ButtonTambahUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTambahUbahActionPerformed
         if (state.equals("index")) {
-            if (No.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Form No Pembiayaan Masih Kosong !!!");
-            } else if (Nama.getText().trim().equals("")) {
+            if (Nama.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Form Nama Masih Kosong !!!");
             } else if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
-            } else if (Jatuh.getDate() == null) {
-                JOptionPane.showMessageDialog(null, "Form Jatuh Tempo Masih Kosong !!!");
             } else {
                 tambahData();
                 resetForm();
                 loadTable();
             }
         } else {
-            if (No.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(null, "Form No Pembiayaan Masih Kosong !!!");
-            } else if (Nama.getText().trim().equals("")) {
+            if (Nama.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Form Nama Masih Kosong !!!");
             } else if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
-            } else if (Jatuh.getDate() == null) {
-                JOptionPane.showMessageDialog(null, "Form Jatuh Tempo Masih Kosong !!!");
             } else {
                 ubahData();
                 resetForm();
@@ -543,13 +548,20 @@ public class Angsuran extends javax.swing.JFrame {
         cari();
     }//GEN-LAST:event_TextCariActionPerformed
 
-    private void NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoActionPerformed
-
     private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NamaActionPerformed
+
+    private void NoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NoItemStateChanged
+
+    }//GEN-LAST:event_NoItemStateChanged
+
+    private void NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoActionPerformed
+        comboPembiayaanIndex = No.getSelectedIndex();
+        if (comboPembiayaanIndex >= 0) {
+            selectedComboPembiayaanIndex = comboPembiayaanID.get(comboPembiayaanIndex);
+        }
+    }//GEN-LAST:event_NoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -650,6 +662,7 @@ public class Angsuran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner Bagi;
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonResetHapus;
     private javax.swing.JButton ButtonTambahUbah;
@@ -660,9 +673,8 @@ public class Angsuran extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCari4;
     private javax.swing.JLabel LabelCari9;
     private javax.swing.JTextField Nama;
-    private javax.swing.JTextField No;
-    private javax.swing.JSpinner Plafon;
-    private javax.swing.JSpinner Plafon1;
+    private javax.swing.JComboBox<String> No;
+    private javax.swing.JSpinner Pokok;
     private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JTable TablePegawai;
     private com.toedter.calendar.JDateChooser Tanggal;
