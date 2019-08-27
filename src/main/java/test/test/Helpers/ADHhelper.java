@@ -13,6 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import org.joda.time.DateTime;
+import org.joda.time.Months;
 
 /**
  *
@@ -24,6 +26,20 @@ public class ADHhelper {
         cal.setTime(tanggalParam);
         
         return cal;
+    }
+
+    public static Date dateTambahBulan(Date tanggalParam, int bulan) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, bulan);
+        
+        return cal.getTime();
+    }
+    
+    public static int dateMonthBetween(Date tanggalParam1, Date tanggalParam2) {
+        DateTime dt1 = new DateTime(tanggalParam1);
+        DateTime dt2 = new DateTime(tanggalParam2);
+        
+        return Months.monthsBetween(dt1, dt2).getMonths();
     }
     
     public static int dateGetDay(Date tanggalParam) {

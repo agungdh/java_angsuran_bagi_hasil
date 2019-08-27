@@ -55,6 +55,7 @@ public class Pembiayaan extends javax.swing.JFrame {
     private String state;
     
     private int valPlafon;
+    private int valWaktu;
     private Date valTanggal;
     private Date valJatuh;
     /**
@@ -81,6 +82,7 @@ public class Pembiayaan extends javax.swing.JFrame {
         });
         
         Plafon.addChangeListener(new PlafonListener());
+        Waktu.addChangeListener(new WaktuListener());
         Tanggal.getDateEditor().addPropertyChangeListener( new PropertyChangeListener() 
         {
             @Override
@@ -113,12 +115,15 @@ public class Pembiayaan extends javax.swing.JFrame {
     
     private void hitungHitungan() {
         System.out.println("======================");
-        if (valTanggal != null) {
-            System.out.println(ADHhelper.dateGetDay(valTanggal) + " " + ADHhelper.dateGetMonth(valTanggal) + " " + ADHhelper.dateGetYear(valTanggal));
-        }
+//        if (valTanggal != null) {
+//            System.out.println(ADHhelper.dateGetDay(valTanggal) + " " + ADHhelper.dateGetMonth(valTanggal) + " " + ADHhelper.dateGetYear(valTanggal));
+//        }
         System.out.println(ADHhelper.rupiah(valPlafon));
-        if (valJatuh != null) {
-            System.out.println(ADHhelper.dateGetDay(valJatuh) + " " + ADHhelper.dateGetMonth(valJatuh) + " " + ADHhelper.dateGetYear(valJatuh));
+//        if (valJatuh != null) {
+//            System.out.println(ADHhelper.dateGetDay(valJatuh) + " " + ADHhelper.dateGetMonth(valJatuh) + " " + ADHhelper.dateGetYear(valJatuh));
+//        }
+        if (valTanggal != null && valJatuh != null) {
+            System.out.println(ADHhelper.dateMonthBetween(valTanggal, valJatuh));
         }
         System.out.println("======================");
     }
@@ -128,6 +133,18 @@ public class Pembiayaan extends javax.swing.JFrame {
           JSpinner spinner = (JSpinner) evt.getSource();
           
           valPlafon = (int) spinner.getValue();
+          
+          hitungHitungan();
+        }
+    }
+
+    class WaktuListener implements ChangeListener {
+        public void stateChanged(ChangeEvent evt) {
+          JSpinner spinner = (JSpinner) evt.getSource();
+          
+          valWaktu = (int) spinner.getValue();
+          
+          valJatuh = ADHhelper.dateTambahBulan(valTanggal, valWaktu);
           
           hitungHitungan();
         }
@@ -312,6 +329,8 @@ public class Pembiayaan extends javax.swing.JFrame {
         Plafon = new javax.swing.JSpinner();
         Pokok = new javax.swing.JSpinner();
         Adm = new javax.swing.JSpinner();
+        LabelCari9 = new javax.swing.JLabel();
+        Waktu = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pembiayaan");
@@ -448,8 +467,11 @@ public class Pembiayaan extends javax.swing.JFrame {
         Bagi.setEnabled(false);
 
         Jatuh.setDateFormatString("dd-MM-yyyy");
+        Jatuh.setEnabled(false);
 
         Pokok.setEnabled(false);
+
+        LabelCari9.setText("Waktu (Bulan)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -493,7 +515,11 @@ public class Pembiayaan extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(No)))
+                                .addComponent(No))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelCari9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -530,7 +556,11 @@ public class Pembiayaan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCari4)
                             .addComponent(Plafon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelCari9)
+                            .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCari5)
                             .addComponent(Jatuh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -546,7 +576,7 @@ public class Pembiayaan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCari8)
                             .addComponent(Adm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
@@ -727,6 +757,7 @@ public class Pembiayaan extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCari6;
     private javax.swing.JLabel LabelCari7;
     private javax.swing.JLabel LabelCari8;
+    private javax.swing.JLabel LabelCari9;
     private javax.swing.JTextField Nama;
     private javax.swing.JTextField No;
     private javax.swing.JSpinner Plafon;
@@ -735,6 +766,7 @@ public class Pembiayaan extends javax.swing.JFrame {
     private javax.swing.JTable TablePegawai;
     private com.toedter.calendar.JDateChooser Tanggal;
     private javax.swing.JTextField TextCari;
+    private javax.swing.JSpinner Waktu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

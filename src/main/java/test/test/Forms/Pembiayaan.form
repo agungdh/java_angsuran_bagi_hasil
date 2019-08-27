@@ -75,6 +75,11 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="No" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="LabelCari9" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="Waktu" min="-2" pref="222" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -123,7 +128,12 @@
                           <Component id="LabelCari4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Plafon" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabelCari9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Waktu" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="LabelCari5" min="-2" max="-2" attributes="0"/>
                           <Component id="Jatuh" min="-2" max="-2" attributes="0"/>
@@ -143,7 +153,7 @@
                           <Component id="LabelCari8" min="-2" max="-2" attributes="0"/>
                           <Component id="Adm" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="ScrollPane" pref="0" max="32767" attributes="0"/>
@@ -353,6 +363,7 @@
     <Component class="com.toedter.calendar.JDateChooser" name="Jatuh">
       <Properties>
         <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="Plafon">
@@ -363,6 +374,13 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="Adm">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCari9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Waktu (Bulan)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="Waktu">
     </Component>
   </SubComponents>
 </Form>
