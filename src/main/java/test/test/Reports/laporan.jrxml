@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan" language="groovy" pageWidth="586" pageHeight="595" orientation="Landscape" columnWidth="546" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
-	<property name="ireport.zoom" value="1.7715610000000022"/>
-	<property name="ireport.x" value="11"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.9487171000000056"/>
+	<property name="ireport.x" value="466"/>
+	<property name="ireport.y" value="4"/>
 	<parameter name="txt_tggl_a" class="java.lang.String"/>
 	<parameter name="txt_tggl_b" class="java.lang.String"/>
 	<parameter name="tggl_a" class="java.lang.String">
@@ -13,7 +13,13 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT a.*, p.no_pembiayaan,
-concat(lpad(day(a.tanggal), 2, 0), '-', lpad(month(a.tanggal), 2, 0), '-', year(a.tanggal)) tanggalparsed
+concat(lpad(day(a.tanggal), 2, 0), '-', lpad(month(a.tanggal), 2, 0), '-', year(a.tanggal)) tanggalparsed,
+(SELECT SUM(basil)
+FROM angsuran
+WHERE tanggal BETWEEN $P{tggl_a} AND $P{tggl_b}) sumbasil,
+(SELECT SUM(pokok)
+FROM angsuran
+WHERE tanggal BETWEEN $P{tggl_a} AND $P{tggl_b}) sumpokok
 FROM pembiayaan p, angsuran a
 WHERE a.id_pembiayaan = p.id
 AND a.tanggal BETWEEN $P{tggl_a} AND $P{tggl_b}
@@ -41,6 +47,8 @@ ORDER BY a.tanggal ASC]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggalparsed" class="java.lang.String"/>
+	<field name="sumbasil" class="java.math.BigDecimal"/>
+	<field name="sumpokok" class="java.math.BigDecimal"/>
 	<title>
 		<band height="53" splitType="Stretch">
 			<staticText>
@@ -152,4 +160,38 @@ ORDER BY a.tanggal ASC]]>
 			</textField>
 		</band>
 	</detail>
+	<columnFooter>
+		<band height="50">
+			<rectangle>
+				<reportElement x="211" y="0" width="109" height="20" uuid="e94736ad-80ac-4374-aeab-3d98089d3fda"/>
+			</rectangle>
+			<textField>
+				<reportElement x="211" y="0" width="109" height="20" uuid="40ec284d-bf81-498c-9d37-98a4ba66947f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jumlah"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="321" y="0" width="109" height="20" uuid="9d613acf-7f92-4a58-9832-c95b9ae77dec"/>
+			</rectangle>
+			<textField>
+				<reportElement x="321" y="0" width="109" height="20" uuid="db75986c-1e10-45af-b535-0ae733e65964"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumpokok}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="430" y="0" width="116" height="20" uuid="eb6e228c-2337-49a9-9365-1dcbd3869274"/>
+			</rectangle>
+			<textField>
+				<reportElement x="430" y="0" width="116" height="20" uuid="ce647294-a63e-4574-a9d2-bac4ea0bfbca"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sumbasil}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
 </jasperReport>
