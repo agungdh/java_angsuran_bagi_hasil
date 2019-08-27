@@ -54,7 +54,9 @@ public class Pembiayaan extends javax.swing.JFrame {
     private String ID;
     private String state;
     
-    private int valPlafon;
+    private double valPlafon;
+    private double valBasil;
+    private double valPokok;
     private int valWaktu;
     private Date valTanggal;
     private Date valJatuh;
@@ -114,18 +116,11 @@ public class Pembiayaan extends javax.swing.JFrame {
     }
     
     private void hitungHitungan() {
-        System.out.println("======================");
-//        if (valTanggal != null) {
-//            System.out.println(ADHhelper.dateGetDay(valTanggal) + " " + ADHhelper.dateGetMonth(valTanggal) + " " + ADHhelper.dateGetYear(valTanggal));
-//        }
-        System.out.println(ADHhelper.rupiah(valPlafon));
-//        if (valJatuh != null) {
-//            System.out.println(ADHhelper.dateGetDay(valJatuh) + " " + ADHhelper.dateGetMonth(valJatuh) + " " + ADHhelper.dateGetYear(valJatuh));
-//        }
-        if (valTanggal != null && valJatuh != null) {
-            System.out.println(ADHhelper.dateMonthBetween(valTanggal, valJatuh));
-        }
-        System.out.println("======================");
+        valBasil = (valPlafon * 2.5 / 100) * valWaktu;
+        Bagi.setValue((int) valBasil);
+        
+        valPokok = valPlafon / valWaktu;
+        Pokok.setValue((int) valPokok);
     }
     
     class PlafonListener implements ChangeListener {
