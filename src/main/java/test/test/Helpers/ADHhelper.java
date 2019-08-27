@@ -18,6 +18,18 @@ import java.util.Date;
  * @author user
  */
 public class ADHhelper {
+    public static int dateGetDay(Date tanggalParam) {
+        return tanggalParam.getDate();
+    }
+
+    public static int dateGetMonth(Date tanggalParam) {
+        return tanggalParam.getMonth();
+    }
+
+    public static int dateGetYear(Date tanggalParam) {
+        return tanggalParam.getYear();
+    }
+    
     public static void d(String string, boolean pembatas) {
         if (!pembatas) {
             out.println(string);

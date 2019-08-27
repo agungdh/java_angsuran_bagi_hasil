@@ -112,9 +112,15 @@ public class Pembiayaan extends javax.swing.JFrame {
     }
     
     private void hitungHitungan() {
-        System.out.println(valTanggal);
-        System.out.println(valPlafon);
-        System.out.println(valJatuh);
+        System.out.println("======================");
+        if (valTanggal != null) {
+            System.out.println(ADHhelper.dateGetDay(valTanggal) + " " + ADHhelper.dateGetMonth(valTanggal) + " " + ADHhelper.dateGetYear(valTanggal));
+        }
+        System.out.println(ADHhelper.rupiah(valPlafon));
+        if (valJatuh != null) {
+            System.out.println(ADHhelper.dateGetDay(valJatuh) + " " + ADHhelper.dateGetMonth(valJatuh) + " " + ADHhelper.dateGetYear(valJatuh));
+        }
+        System.out.println("======================");
     }
     
     class PlafonListener implements ChangeListener {
