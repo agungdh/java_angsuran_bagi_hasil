@@ -30,6 +30,7 @@ public class ADHhelper {
 
     public static Date dateTambahBulan(Date tanggalParam, int bulan) {
         Calendar cal = Calendar.getInstance();
+        cal.setTime(tanggalParam);
         cal.add(Calendar.MONTH, bulan);
         
         return cal.getTime();
