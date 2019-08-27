@@ -346,6 +346,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="Bagi">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="Jatuh">
       <Properties>
@@ -355,6 +358,9 @@
     <Component class="javax.swing.JSpinner" name="Plafon">
     </Component>
     <Component class="javax.swing.JSpinner" name="Pokok">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="Adm">
     </Component>

@@ -29,6 +29,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+import javax.swing.JSpinner;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -50,6 +53,10 @@ public class Pembiayaan extends javax.swing.JFrame {
     private DefaultTableModel model = new DefaultTableModel();
     private String ID;
     private String state;
+    
+    private int valPlafon;
+    private Date valTanggal;
+    private Date valJatuh;
     /**
      * Creates new form PangkatGol
      */
@@ -73,9 +80,53 @@ public class Pembiayaan extends javax.swing.JFrame {
             }
         });
         
+        Plafon.addChangeListener(new PlafonListener());
+        Tanggal.getDateEditor().addPropertyChangeListener( new PropertyChangeListener() 
+        {
+            @Override
+            public void propertyChange(PropertyChangeEvent e) 
+            {
+                if ("date".equals(e.getPropertyName())) 
+                {
+                    valTanggal = (Date) e.getNewValue();
+                    
+                    hitungHitungan();
+                }
+            }
+        });
+        Jatuh.getDateEditor().addPropertyChangeListener( new PropertyChangeListener() 
+        {
+            @Override
+            public void propertyChange(PropertyChangeEvent e) 
+            {
+                if ("date".equals(e.getPropertyName())) 
+                {
+                    valJatuh = (Date) e.getNewValue();
+                    
+                    hitungHitungan();
+                }
+            }
+        });
+        
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     
+    private void hitungHitungan() {
+        System.out.println(valTanggal);
+        System.out.println(valPlafon);
+        System.out.println(valJatuh);
+    }
+    
+    class PlafonListener implements ChangeListener {
+        public void stateChanged(ChangeEvent evt) {
+          JSpinner spinner = (JSpinner) evt.getSource();
+          
+          valPlafon = (int) spinner.getValue();
+          
+          hitungHitungan();
+        }
+    }
+   
     public void cari() {
         if (TextCari.getText().equals("")) {
             loadTable();
@@ -388,7 +439,11 @@ public class Pembiayaan extends javax.swing.JFrame {
 
         Tanggal.setDateFormatString("dd-MM-yyyy");
 
+        Bagi.setEnabled(false);
+
         Jatuh.setDateFormatString("dd-MM-yyyy");
+
+        Pokok.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
