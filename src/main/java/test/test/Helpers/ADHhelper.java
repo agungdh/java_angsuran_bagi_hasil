@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -18,16 +19,26 @@ import java.util.Date;
  * @author user
  */
 public class ADHhelper {
+    public static Calendar dateToCalendar(Date tanggalParam) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(tanggalParam);
+        
+        return cal;
+    }
+    
     public static int dateGetDay(Date tanggalParam) {
-        return tanggalParam.getDate();
+        Calendar cal = dateToCalendar(tanggalParam);
+        return cal.get(Calendar.DATE);
     }
 
     public static int dateGetMonth(Date tanggalParam) {
-        return tanggalParam.getMonth();
+        Calendar cal = dateToCalendar(tanggalParam);
+        return cal.get(Calendar.MONTH);
     }
 
     public static int dateGetYear(Date tanggalParam) {
-        return tanggalParam.getYear();
+        Calendar cal = dateToCalendar(tanggalParam);
+        return cal.get(Calendar.YEAR);
     }
     
     public static void d(String string, boolean pembatas) {
