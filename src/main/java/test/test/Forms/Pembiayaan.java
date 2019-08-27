@@ -145,6 +145,7 @@ public class Pembiayaan extends javax.swing.JFrame {
           valWaktu = (int) spinner.getValue();
           
           valJatuh = ADHhelper.dateTambahBulan(valTanggal, valWaktu);
+          Jatuh.setDate(valJatuh);
           
           hitungHitungan();
         }
