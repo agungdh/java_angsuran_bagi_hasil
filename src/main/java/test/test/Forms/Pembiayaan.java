@@ -249,6 +249,7 @@ public class Pembiayaan extends javax.swing.JFrame {
             pembiayaan.set("nama", Nama.getText());
             pembiayaan.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
             pembiayaan.set("plafon", Plafon.getValue());
+            pembiayaan.set("waktu", Waktu.getValue());
             pembiayaan.set("jatuh_tempo", ADHhelper.parseTanggal(Jatuh.getDate()));
             pembiayaan.set("basil", Bagi.getValue());
             pembiayaan.set("pokok", Pokok.getValue());
@@ -268,6 +269,7 @@ public class Pembiayaan extends javax.swing.JFrame {
             pembiayaan.set("nama", Nama.getText());
             pembiayaan.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
             pembiayaan.set("plafon", Plafon.getValue());
+            pembiayaan.set("waktu", Waktu.getValue());
             pembiayaan.set("jatuh_tempo", ADHhelper.parseTanggal(Jatuh.getDate()));
             pembiayaan.set("basil", Bagi.getValue());
             pembiayaan.set("pokok", Pokok.getValue());

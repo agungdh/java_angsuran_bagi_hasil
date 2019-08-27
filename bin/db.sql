@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: intan
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Tue, 27 Aug 2019 11:12:30 +0200
+-- Date: Tue, 27 Aug 2019 12:06:30 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -69,12 +69,11 @@ CREATE TABLE `angsuran` (
 LOCK TABLES `angsuran` WRITE;
 /*!40000 ALTER TABLE `angsuran` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `angsuran` VALUES (2,1,'dfsadf','2019-08-09',124124,1241241240),(3,1,'dfsadf','2019-08-09',124124,1241241240);
 /*!40000 ALTER TABLE `angsuran` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `angsuran` with 2 row(s)
+-- Dumped table `angsuran` with 0 row(s)
 --
 
 --
@@ -88,6 +87,7 @@ CREATE TABLE `pembiayaan` (
   `no_pembiayaan` varchar(191) NOT NULL,
   `nama` varchar(191) NOT NULL,
   `tanggal` date NOT NULL,
+  `waktu` int(11) NOT NULL,
   `plafon` int(11) NOT NULL,
   `jatuh_tempo` date NOT NULL,
   `basil` int(11) NOT NULL,
@@ -104,12 +104,11 @@ CREATE TABLE `pembiayaan` (
 LOCK TABLES `pembiayaan` WRITE;
 /*!40000 ALTER TABLE `pembiayaan` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `pembiayaan` VALUES (1,'111','Test 1','2019-08-01',1000000,'2020-08-03',2000000,3000000,4000000),(2,'1112','Test 12','2019-02-01',1000000,'2020-09-03',2000000,3000000,4000000);
 /*!40000 ALTER TABLE `pembiayaan` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `pembiayaan` with 2 row(s)
+-- Dumped table `pembiayaan` with 0 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -121,4 +120,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 27 Aug 2019 11:12:30 +0200
+-- Dump completed on: Tue, 27 Aug 2019 12:06:30 +0200

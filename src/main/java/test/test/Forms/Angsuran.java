@@ -375,6 +375,10 @@ public class Angsuran extends javax.swing.JFrame {
 
         Tanggal.setDateFormatString("dd-MM-yyyy");
 
+        Pokok.setEnabled(false);
+
+        Bagi.setEnabled(false);
+
         LabelCari9.setText("Basil");
 
         No.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -556,6 +560,8 @@ public class Angsuran extends javax.swing.JFrame {
         comboPembiayaanIndex = No.getSelectedIndex();
         if (comboPembiayaanIndex >= 0) {
             selectedComboPembiayaanIndex = comboPembiayaanID.get(comboPembiayaanIndex);
+            
+            PembiayaanModel pembiayaan = PembiayaanModel.findById(selectedComboPembiayaanIndex);
         }
     }//GEN-LAST:event_NoActionPerformed
 
