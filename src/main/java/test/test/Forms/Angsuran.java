@@ -623,7 +623,7 @@ public class Angsuran extends javax.swing.JFrame {
                 for (int i = 1; i <= sisa; i++) {
                     Base.open();
                     AngsuranModel angsuran = new AngsuranModel();
-                    angsuran.set("id_pembiayan", selectedComboPembiayaanIndex);
+                    angsuran.set("id_pembiayaan", selectedComboPembiayaanIndex);
                     try {
                         angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
                     } catch (ParseException ex) {
@@ -632,6 +632,19 @@ public class Angsuran extends javax.swing.JFrame {
                     angsuran.set("pokok", pembiayaan.getInteger("pokok"));
                     angsuran.set("basil", pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu"));
                     angsuran.save();
+                    Base.close();
+                }
+                
+                if (sisa >= 2) {
+                    Base.open();
+                    LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? LIMIT 2", selectedComboPembiayaanIndex);
+                    Base.close();
+                    
+                    Base.open();
+                    for(AngsuranModel angsuran : angsuransCheck) {
+                        angsuran.set("basil", 0);
+                        angsuran.save();
+                    }
                     Base.close();
                 }
             }
