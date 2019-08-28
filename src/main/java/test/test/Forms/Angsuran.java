@@ -620,7 +620,20 @@ public class Angsuran extends javax.swing.JFrame {
             
             int rslt = JOptionPane.showConfirmDialog(null, kataKata);
             if (rslt == JOptionPane.YES_OPTION) {
-                System.out.println("Sukses");
+                for (int i = 1; i <= sisa; i++) {
+                    Base.open();
+                    AngsuranModel angsuran = new AngsuranModel();
+                    angsuran.set("id_pembiayan", selectedComboPembiayaanIndex);
+                    try {
+                        angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    angsuran.set("pokok", pembiayaan.getInteger("pokok"));
+                    angsuran.set("basil", pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu"));
+                    angsuran.save();
+                    Base.close();
+                }
             }
             
             resetForm();
