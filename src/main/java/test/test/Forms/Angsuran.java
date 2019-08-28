@@ -589,9 +589,33 @@ public class Angsuran extends javax.swing.JFrame {
         if (Tanggal.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
         } else {
+            Base.open();
+            LazyList<AngsuranModel> angsurans = AngsuranModel.where("id_pembiayaan = ?", selectedComboPembiayaanIndex);
+            Base.close();
+            
+            Base.open();
+            PembiayaanModel pembiayaan = PembiayaanModel.findById(selectedComboPembiayaanIndex);
+            Base.close();
+            
+            int pokok = pembiayaan.getInteger("pokok");
+            int basil = pembiayaan.getInteger("basil");
+            int waktu = pembiayaan.getInteger("waktu");
+            Base.open();
+            int jumlahAngsuran  = angsurans.size();
+            Base.close();
+            int sisa = waktu - jumlahAngsuran;
+            
+            if (sisa >= 2) {
+                pokok = pokok * sisa;
+                basil = basil * (sisa - 2);
+            } else {
+                pokok = pokok * sisa;
+                basil = basil * sisa;                
+            }
+            
             JOptionPane.showMessageDialog(null, "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
-                    + "Pokok: " + ADHhelper.rupiah(200000) + "\n"
-                    + "Bagi Hasil: " + ADHhelper.rupiah(100000) + "\n");
+                    + "Pokok: " + ADHhelper.rupiah(pokok) + "\n"
+                    + "Bagi Hasil: " + ADHhelper.rupiah(basil) + "\n");
             
             resetForm();
             loadTable();

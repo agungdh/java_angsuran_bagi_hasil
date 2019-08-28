@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan" language="groovy" pageWidth="586" pageHeight="595" orientation="Landscape" columnWidth="546" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
 	<property name="ireport.zoom" value="1.9487171000000056"/>
-	<property name="ireport.x" value="466"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="4"/>
 	<parameter name="txt_tggl_a" class="java.lang.String"/>
 	<parameter name="txt_tggl_b" class="java.lang.String"/>
@@ -12,7 +12,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT a.*, p.no_pembiayaan,
+		<![CDATA[SELECT a.*, p.no_pembiayaan, p.nama,
 concat(lpad(day(a.tanggal), 2, 0), '-', lpad(month(a.tanggal), 2, 0), '-', year(a.tanggal)) tanggalparsed,
 (SELECT SUM(basil)
 FROM angsuran
@@ -31,9 +31,6 @@ ORDER BY a.tanggal ASC]]>
 	<field name="id_pembiayaan" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nama" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="tanggal" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -44,6 +41,9 @@ ORDER BY a.tanggal ASC]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_pembiayaan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggalparsed" class="java.lang.String"/>
