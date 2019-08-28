@@ -613,9 +613,15 @@ public class Angsuran extends javax.swing.JFrame {
                 basil = basil * sisa;                
             }
             
-            JOptionPane.showMessageDialog(null, "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
+            String kataKata = "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
                     + "Pokok: " + ADHhelper.rupiah(pokok) + "\n"
-                    + "Bagi Hasil: " + ADHhelper.rupiah(basil) + "\n");
+                    + "Bagi Hasil: " + ADHhelper.rupiah(basil) + "\n"
+                    + "Lakukan Pelunasan ?";
+            
+            int rslt = JOptionPane.showConfirmDialog(null, kataKata);
+            if (rslt == JOptionPane.YES_OPTION) {
+                System.out.println("Sukses");
+            }
             
             resetForm();
             loadTable();
