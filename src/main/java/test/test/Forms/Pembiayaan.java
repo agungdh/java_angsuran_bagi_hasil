@@ -94,6 +94,12 @@ public class Pembiayaan extends javax.swing.JFrame {
                 {
                     valTanggal = (Date) e.getNewValue();
                     
+                    
+                    if (valTanggal != null) {
+                        Waktu.setValue(0);
+                        Jatuh.setDate(ADHhelper.dateTambahBulan(valTanggal, valWaktu));
+                    }
+                    
                     hitungHitungan();
                 }
             }
@@ -135,14 +141,16 @@ public class Pembiayaan extends javax.swing.JFrame {
 
     class WaktuListener implements ChangeListener {
         public void stateChanged(ChangeEvent evt) {
-          JSpinner spinner = (JSpinner) evt.getSource();
-          
-          valWaktu = (int) spinner.getValue();
-          
-          valJatuh = ADHhelper.dateTambahBulan(valTanggal, valWaktu);
-          Jatuh.setDate(valJatuh);
-          
-          hitungHitungan();
+            if (Tanggal.getDate() != null) {
+                JSpinner spinner = (JSpinner) evt.getSource();
+
+                valWaktu = (int) spinner.getValue();
+
+                valJatuh = ADHhelper.dateTambahBulan(valTanggal, valWaktu);
+                Jatuh.setDate(valJatuh);
+
+                hitungHitungan();
+            } 
         }
     }
    
@@ -290,6 +298,7 @@ public class Pembiayaan extends javax.swing.JFrame {
         Adm.setValue(0);
         Tanggal.setDate(null);
         Jatuh.setDate(null);
+        Waktu.setValue(0);
     }
 
     /**
@@ -616,6 +625,7 @@ public class Pembiayaan extends javax.swing.JFrame {
             Bagi.setValue(pembiayaan.getInteger("basil"));
             Pokok.setValue(pembiayaan.getInteger("pokok"));
             Adm.setValue(pembiayaan.getInteger("administrasi"));
+            Waktu.setValue(pembiayaan.getInteger("waktu"));
             setState("edit");
         }
     }//GEN-LAST:event_TablePegawaiMouseClicked
