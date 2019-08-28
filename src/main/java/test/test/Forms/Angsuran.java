@@ -607,10 +607,10 @@ public class Angsuran extends javax.swing.JFrame {
             
             if (sisa >= 2) {
                 pokok = pokok * sisa;
-                basil = basil * (sisa - 2);
+                basil = basil / waktu * (sisa - 2);
             } else {
                 pokok = pokok * sisa;
-                basil = basil * sisa;                
+                basil = basil / waktu * sisa;                
             }
             
             String kataKata = "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
