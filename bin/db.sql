@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: intan
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Tue, 27 Aug 2019 12:06:30 +0200
+-- Date: Wed, 28 Aug 2019 05:33:35 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,12 +54,11 @@ COMMIT;
 CREATE TABLE `angsuran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pembiayaan` int(11) NOT NULL,
-  `nama` varchar(191) NOT NULL,
   `tanggal` date NOT NULL,
   `pokok` int(11) NOT NULL,
   `basil` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,11 +68,12 @@ CREATE TABLE `angsuran` (
 LOCK TABLES `angsuran` WRITE;
 /*!40000 ALTER TABLE `angsuran` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `angsuran` VALUES (117,10,'2019-08-01',750000,225000),(118,9,'2019-08-09',833333,500000);
 /*!40000 ALTER TABLE `angsuran` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `angsuran` with 0 row(s)
+-- Dumped table `angsuran` with 2 row(s)
 --
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `pembiayaan` (
   `pokok` int(11) NOT NULL,
   `administrasi` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,11 +104,12 @@ CREATE TABLE `pembiayaan` (
 LOCK TABLES `pembiayaan` WRITE;
 /*!40000 ALTER TABLE `pembiayaan` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `pembiayaan` VALUES (9,'11','Test 11','2019-08-09',24,20000000,'2021-08-09',12000000,833333,50000),(10,'299','Test 299','2019-08-01',12,9000000,'2020-08-01',2700000,750000,20000);
 /*!40000 ALTER TABLE `pembiayaan` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `pembiayaan` with 0 row(s)
+-- Dumped table `pembiayaan` with 2 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -120,4 +121,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 27 Aug 2019 12:06:30 +0200
+-- Dump completed on: Wed, 28 Aug 2019 05:33:35 +0200
