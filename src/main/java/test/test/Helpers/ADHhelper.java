@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Months;
 
 /**
@@ -21,6 +22,16 @@ import org.joda.time.Months;
  * @author user
  */
 public class ADHhelper {
+    public static Date dateToday() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        
+        return cal.getTime();
+    }
+    
     public static Calendar dateToCalendar(Date tanggalParam) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(tanggalParam);
@@ -41,6 +52,13 @@ public class ADHhelper {
         DateTime dt2 = new DateTime(tanggalParam2);
         
         return Months.monthsBetween(dt1, dt2).getMonths();
+    }
+
+    public static int dateDayBetween(Date tanggalParam1, Date tanggalParam2) {
+        DateTime dt1 = new DateTime(tanggalParam1);
+        DateTime dt2 = new DateTime(tanggalParam2);
+        
+        return Days.daysBetween(dt1, dt2).getDays();
     }
     
     public static int dateGetDay(Date tanggalParam) {

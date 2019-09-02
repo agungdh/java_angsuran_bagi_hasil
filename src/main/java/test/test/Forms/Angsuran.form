@@ -75,6 +75,21 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="Angsuran" pref="224" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LabelCari12" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Jatuh" pref="224" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LabelCari13" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Denda" pref="224" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LabelCari14" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Total" pref="224" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -104,7 +119,7 @@
                           <Component id="LabelCari" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ScrollPane" pref="341" max="32767" attributes="0"/>
+                      <Component id="ScrollPane" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -141,6 +156,21 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Angsuran" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LabelCari11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Jatuh" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelCari12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Denda" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelCari13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Total" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelCari14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -367,6 +397,36 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Angsuran">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Jatuh">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCari12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jatuh Tempo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCari13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Denda"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Denda">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCari14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Total"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Total">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
