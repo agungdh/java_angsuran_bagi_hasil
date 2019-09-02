@@ -66,8 +66,8 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="LabelCari2" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Nama" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="Anggota" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -114,11 +114,11 @@
                           <Component id="No" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabelCari2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Nama" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LabelCari2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Anggota" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="LabelCari3" min="-2" max="-2" attributes="0"/>
                           <Component id="Tanggal" min="-2" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
                           <Component id="LabelCari9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Waktu" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="11" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="LabelCari5" min="-2" max="-2" attributes="0"/>
                           <Component id="Jatuh" min="-2" max="-2" attributes="0"/>
@@ -312,13 +312,8 @@
     </Container>
     <Component class="javax.swing.JLabel" name="LabelCari2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nama"/>
+        <Property name="text" type="java.lang.String" value="Anggota"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Nama">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NamaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCari3">
       <Properties>
@@ -381,6 +376,25 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="Waktu">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="Anggota">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AnggotaItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AnggotaActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
