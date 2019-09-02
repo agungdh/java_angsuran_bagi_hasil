@@ -703,10 +703,24 @@ public class Pembiayaan extends javax.swing.JFrame {
                 Base.open();
                 LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan = ?", No.getText());
                 Base.close();
-
+                
                 Base.open();
                 if (pembiayaans.size() > 0) {
-                    JOptionPane.showMessageDialog(null, "No Pembiayaan Sudah Ada !!!");
+                    Base.close();
+                    
+                    Base.open();
+                    PembiayaanModel pembiayaan = pembiayaans.get(0);
+                    Base.close();
+                    
+                    if ((int)pembiayaan.getInteger("id") == Integer.parseInt(ID)) {
+                        ubahData();
+                        resetForm();
+                        loadTable();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No Pembiayaan Sudah Ada !!!");
+                    }
+                    
+                    Base.open();
                 } else {
                     Base.close();
                     
