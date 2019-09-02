@@ -35,11 +35,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari8" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Adm" min="-2" pref="222" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Component id="LabelCari7" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="Pokok" min="-2" pref="222" max="-2" attributes="0"/>
@@ -79,6 +74,17 @@
                               <Component id="LabelCari9" min="-2" pref="82" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="Waktu" min="-2" pref="222" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelCari8" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="LabelCari10" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="Adm" pref="222" max="32767" attributes="0"/>
+                                  <Component id="Jaminan" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -133,7 +139,7 @@
                           <Component id="LabelCari9" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Waktu" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="LabelCari5" min="-2" max="-2" attributes="0"/>
                           <Component id="Jatuh" min="-2" max="-2" attributes="0"/>
@@ -153,7 +159,12 @@
                           <Component id="LabelCari8" min="-2" max="-2" attributes="0"/>
                           <Component id="Adm" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabelCari10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Jaminan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="ScrollPane" pref="0" max="32767" attributes="0"/>
@@ -395,6 +406,13 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCari10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jaminan"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Jaminan">
     </Component>
   </SubComponents>
 </Form>

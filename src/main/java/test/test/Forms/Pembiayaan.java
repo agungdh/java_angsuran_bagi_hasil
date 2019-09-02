@@ -198,6 +198,7 @@ public class Pembiayaan extends javax.swing.JFrame {
         model.addColumn("Bagi Hasil");
         model.addColumn("Pokok");
         model.addColumn("Administrasi");
+        model.addColumn("Jaminan");
         
         Base.open();
         
@@ -213,7 +214,8 @@ public class Pembiayaan extends javax.swing.JFrame {
                     ADHhelper.tanggalIndo(pembiayaan.getString("jatuh_tempo")),
                     ADHhelper.rupiah(pembiayaan.getInteger("basil")),
                     ADHhelper.rupiah(pembiayaan.getInteger("pokok")),
-                    ADHhelper.rupiah(pembiayaan.getInteger("administrasi"))
+                    ADHhelper.rupiah(pembiayaan.getInteger("administrasi")),
+                    pembiayaan.getString("jaminan")
                 });
             }
         } catch (Exception e) {
@@ -287,6 +289,7 @@ public class Pembiayaan extends javax.swing.JFrame {
             pembiayaan.set("basil", Bagi.getValue());
             pembiayaan.set("pokok", Pokok.getValue());
             pembiayaan.set("administrasi", Adm.getValue());
+            pembiayaan.set("jaminan", Jaminan.getText());
             pembiayaan.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -307,6 +310,7 @@ public class Pembiayaan extends javax.swing.JFrame {
             pembiayaan.set("basil", Bagi.getValue());
             pembiayaan.set("pokok", Pokok.getValue());
             pembiayaan.set("administrasi", Adm.getValue());
+            pembiayaan.set("jaminan", Jaminan.getText());
             pembiayaan.save();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -316,6 +320,7 @@ public class Pembiayaan extends javax.swing.JFrame {
 
     private void resetForm() {
         No.setText("");
+        Jaminan.setText("");
         Anggota.setSelectedIndex(0);
         Plafon.setValue(0);
         Bagi.setValue(0);
@@ -363,6 +368,8 @@ public class Pembiayaan extends javax.swing.JFrame {
         LabelCari9 = new javax.swing.JLabel();
         Waktu = new javax.swing.JSpinner();
         Anggota = new javax.swing.JComboBox<>();
+        LabelCari10 = new javax.swing.JLabel();
+        Jaminan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pembiayaan");
@@ -511,6 +518,8 @@ public class Pembiayaan extends javax.swing.JFrame {
             }
         });
 
+        LabelCari10.setText("Jaminan");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -521,10 +530,6 @@ public class Pembiayaan extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LabelCari8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Adm, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -557,7 +562,15 @@ public class Pembiayaan extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelCari8, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(LabelCari10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Adm, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                    .addComponent(Jaminan))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -598,7 +611,7 @@ public class Pembiayaan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelCari9)
                             .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCari5)
                             .addComponent(Jatuh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -614,7 +627,11 @@ public class Pembiayaan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelCari8)
                             .addComponent(Adm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelCari10)
+                            .addComponent(Jaminan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
@@ -645,6 +662,7 @@ public class Pembiayaan extends javax.swing.JFrame {
             Base.close();
 
             No.setText(pembiayaan.getString("no_pembiayaan"));
+            Jaminan.setText(pembiayaan.getString("jaminan"));
             Anggota.setSelectedIndex(comboAnggotaID.indexOf(Integer.parseInt(pembiayaan.getString("id_anggota"))));
             try {
                 Tanggal.setDate(ADHhelper.getTanggalFromDB(pembiayaan.getString("tanggal")));
@@ -665,6 +683,8 @@ public class Pembiayaan extends javax.swing.JFrame {
         if (state.equals("index")) {
             if (No.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Form No Pembiayaan Masih Kosong !!!");
+            } else if (Jaminan.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Jaminan Masih Kosong !!!");
             } else if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else if (Jatuh.getDate() == null) {
@@ -693,6 +713,8 @@ public class Pembiayaan extends javax.swing.JFrame {
         } else {
             if (No.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(null, "Form No Pembiayaan Masih Kosong !!!");
+            } else if (Jaminan.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "Form Jaminan Masih Kosong !!!");
             } else if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else if (Jatuh.getDate() == null) {
@@ -752,16 +774,16 @@ public class Pembiayaan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NoActionPerformed
 
-    private void AnggotaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AnggotaItemStateChanged
-
-    }//GEN-LAST:event_AnggotaItemStateChanged
-
     private void AnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnggotaActionPerformed
         comboAnggotaIndex = Anggota.getSelectedIndex();
         if (comboAnggotaIndex >= 0) {
             selectedComboAnggotaIndex = comboAnggotaID.get(comboAnggotaIndex);
         }
     }//GEN-LAST:event_AnggotaActionPerformed
+
+    private void AnggotaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AnggotaItemStateChanged
+
+    }//GEN-LAST:event_AnggotaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -836,9 +858,11 @@ public class Pembiayaan extends javax.swing.JFrame {
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonResetHapus;
     private javax.swing.JButton ButtonTambahUbah;
+    private javax.swing.JTextField Jaminan;
     private com.toedter.calendar.JDateChooser Jatuh;
     private javax.swing.JLabel LabelCari;
     private javax.swing.JLabel LabelCari1;
+    private javax.swing.JLabel LabelCari10;
     private javax.swing.JLabel LabelCari2;
     private javax.swing.JLabel LabelCari3;
     private javax.swing.JLabel LabelCari4;
