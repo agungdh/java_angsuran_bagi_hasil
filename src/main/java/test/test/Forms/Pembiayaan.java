@@ -669,10 +669,26 @@ public class Pembiayaan extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else if (Jatuh.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Jatuh Tempo Masih Kosong !!!");
+            } else if ((int)Waktu.getValue() < 3 || (int)Waktu.getValue() > 20) {
+                JOptionPane.showMessageDialog(null, "Tempo Waktu Antara 3 Sampai 20 Bulan !!!");
             } else {
-                tambahData();
-                resetForm();
-                loadTable();
+                Base.open();
+                LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan = ?", No.getText());
+                Base.close();
+
+                Base.open();
+                if (pembiayaans.size() > 0) {
+                    JOptionPane.showMessageDialog(null, "No Pembiayaan Sudah Ada !!!");
+                } else {
+                    Base.close();
+                    
+                    tambahData();
+                    resetForm();
+                    loadTable();
+                    
+                    Base.open();
+                }
+                Base.close();
             }
         } else {
             if (No.getText().trim().equals("")) {
@@ -681,10 +697,26 @@ public class Pembiayaan extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else if (Jatuh.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Jatuh Tempo Masih Kosong !!!");
+            } else if ((int)Waktu.getValue() < 3 || (int)Waktu.getValue() > 20) {
+                JOptionPane.showMessageDialog(null, "Tempo Waktu Antara 3 Sampai 20 Bulan !!!");
             } else {
-                ubahData();
-                resetForm();
-                loadTable();
+                Base.open();
+                LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan = ?", No.getText());
+                Base.close();
+
+                Base.open();
+                if (pembiayaans.size() > 0) {
+                    JOptionPane.showMessageDialog(null, "No Pembiayaan Sudah Ada !!!");
+                } else {
+                    Base.close();
+                    
+                    ubahData();
+                    resetForm();
+                    loadTable();
+                    
+                    Base.open();
+                }
+                Base.close();
             }
         }
     }//GEN-LAST:event_ButtonTambahUbahActionPerformed
