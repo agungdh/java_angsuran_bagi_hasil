@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: intan
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Mon, 02 Sep 2019 02:51:27 +0200
+-- Date: Mon, 02 Sep 2019 03:43:54 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -92,7 +92,7 @@ CREATE TABLE `angsuran` (
   PRIMARY KEY (`id`),
   KEY `id_pembiayaan` (`id_pembiayaan`),
   CONSTRAINT `angsuran_ibfk_1` FOREIGN KEY (`id_pembiayaan`) REFERENCES `pembiayaan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=587 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=591 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,11 +102,12 @@ CREATE TABLE `angsuran` (
 LOCK TABLES `angsuran` WRITE;
 /*!40000 ALTER TABLE `angsuran` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `angsuran` VALUES (588,19,'2019-09-06',166666,50000),(589,19,'2019-09-19',166666,50000),(590,19,'2019-09-25',166666,50000);
 /*!40000 ALTER TABLE `angsuran` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `angsuran` with 0 row(s)
+-- Dumped table `angsuran` with 3 row(s)
 --
 
 --
@@ -131,7 +132,7 @@ CREATE TABLE `pembiayaan` (
   PRIMARY KEY (`id`),
   KEY `id_anggota` (`id_anggota`),
   CONSTRAINT `pembiayaan_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,11 +142,12 @@ CREATE TABLE `pembiayaan` (
 LOCK TABLES `pembiayaan` WRITE;
 /*!40000 ALTER TABLE `pembiayaan` DISABLE KEYS */;
 SET autocommit=0;
+INSERT INTO `pembiayaan` VALUES (19,5,'123','2019-09-05',12,2000000,'2020-09-05',600000,166666,75000,'Motor',NULL);
 /*!40000 ALTER TABLE `pembiayaan` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `pembiayaan` with 0 row(s)
+-- Dumped table `pembiayaan` with 1 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -157,4 +159,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 02 Sep 2019 02:51:27 +0200
+-- Dump completed on: Mon, 02 Sep 2019 03:43:54 +0200
