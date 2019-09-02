@@ -563,17 +563,45 @@ public class Angsuran extends javax.swing.JFrame {
             if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else {
-                tambahData();
-                resetForm();
-                loadTable();
+                Base.open();
+                LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan = ?", Pembiayaan.getText());
+                Base.close();
+
+                Base.open();
+                if (pembiayaans.size() > 0) {
+                    Base.close();
+                    
+                    tambahData();
+                    resetForm();
+                    loadTable();
+                    
+                    Base.open();
+                } else {
+                    JOptionPane.showMessageDialog(null, "No Pembiayaan Tidak Ada !!!");
+                }
+                Base.close();
             }
         } else {
             if (Tanggal.getDate() == null) {
                 JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
             } else {
-                ubahData();
-                resetForm();
-                loadTable();
+                 Base.open();
+                LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan = ?", Pembiayaan.getText());
+                Base.close();
+
+                Base.open();
+                if (pembiayaans.size() > 0) {
+                    Base.close();
+                    
+                    ubahData();
+                    resetForm();
+                    loadTable();
+                    
+                    Base.open();
+                } else {
+                    JOptionPane.showMessageDialog(null, "No Pembiayaan Tidak Ada !!!");
+                }
+                Base.close();
             }
         }
     }//GEN-LAST:event_ButtonTambahUbahActionPerformed
