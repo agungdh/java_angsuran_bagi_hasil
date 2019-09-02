@@ -180,6 +180,16 @@ public class Angsuran extends javax.swing.JFrame {
             
             Angsuran.setText(String.valueOf(angsuranKe));
             
+            int sisaPeriodeAngsuran = pembiayaan.getInteger("waktu") - jumlahAngsuran;
+            int sisaAngsuran;
+            if (sisaPeriodeAngsuran > 0) {
+                sisaAngsuran = (pokok + basil) * sisaPeriodeAngsuran;
+            } else {
+                sisaAngsuran = 0;
+            }
+            
+            Sisa.setText(ADHhelper.rupiah(sisaAngsuran));
+            
             Base.open();
         } else {
             Pokok.setValue(0);
@@ -190,6 +200,8 @@ public class Angsuran extends javax.swing.JFrame {
             Periode.setText("");
             Jatuh.setText("");
             Denda.setText("");
+            Total.setText("");
+            Sisa.setText("");
             
             IDPembiayaan = 0;
         }
@@ -365,6 +377,8 @@ public class Angsuran extends javax.swing.JFrame {
         Denda = new javax.swing.JTextField();
         LabelCari14 = new javax.swing.JLabel();
         Total = new javax.swing.JTextField();
+        Sisa = new javax.swing.JTextField();
+        LabelCari15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Angsuran");
@@ -524,6 +538,10 @@ public class Angsuran extends javax.swing.JFrame {
 
         Total.setEditable(false);
 
+        Sisa.setEditable(false);
+
+        LabelCari15.setText("Sisa Angsuran");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -576,7 +594,11 @@ public class Angsuran extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari14, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                                .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelCari15, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Sisa, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -640,7 +662,11 @@ public class Angsuran extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelCari14))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Sisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LabelCari15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -939,6 +965,7 @@ public class Angsuran extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCari12;
     private javax.swing.JLabel LabelCari13;
     private javax.swing.JLabel LabelCari14;
+    private javax.swing.JLabel LabelCari15;
     private javax.swing.JLabel LabelCari2;
     private javax.swing.JLabel LabelCari3;
     private javax.swing.JLabel LabelCari4;
@@ -948,6 +975,7 @@ public class Angsuran extends javax.swing.JFrame {
     private javax.swing.JTextField Periode;
     private javax.swing.JSpinner Pokok;
     private javax.swing.JScrollPane ScrollPane;
+    private javax.swing.JTextField Sisa;
     private javax.swing.JTable TablePegawai;
     private com.toedter.calendar.JDateChooser Tanggal;
     private javax.swing.JTextField TextCari;

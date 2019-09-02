@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: intan
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Mon, 02 Sep 2019 03:43:54 +0200
+-- Date: Mon, 02 Sep 2019 11:38:02 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -92,7 +92,7 @@ CREATE TABLE `angsuran` (
   PRIMARY KEY (`id`),
   KEY `id_pembiayaan` (`id_pembiayaan`),
   CONSTRAINT `angsuran_ibfk_1` FOREIGN KEY (`id_pembiayaan`) REFERENCES `pembiayaan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=591 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=600 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,12 +102,12 @@ CREATE TABLE `angsuran` (
 LOCK TABLES `angsuran` WRITE;
 /*!40000 ALTER TABLE `angsuran` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `angsuran` VALUES (588,19,'2019-09-06',166666,50000),(589,19,'2019-09-19',166666,50000),(590,19,'2019-09-25',166666,50000);
+INSERT INTO `angsuran` VALUES (599,19,'2019-09-25',666666,50000);
 /*!40000 ALTER TABLE `angsuran` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `angsuran` with 3 row(s)
+-- Dumped table `angsuran` with 1 row(s)
 --
 
 --
@@ -142,7 +142,7 @@ CREATE TABLE `pembiayaan` (
 LOCK TABLES `pembiayaan` WRITE;
 /*!40000 ALTER TABLE `pembiayaan` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `pembiayaan` VALUES (19,5,'123','2019-09-05',12,2000000,'2020-09-05',600000,166666,75000,'Motor',NULL);
+INSERT INTO `pembiayaan` VALUES (19,5,'123','2019-07-31',3,2000000,'2019-10-31',150000,666666,75000,'Motor',NULL);
 /*!40000 ALTER TABLE `pembiayaan` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -159,4 +159,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 02 Sep 2019 03:43:54 +0200
+-- Dump completed on: Mon, 02 Sep 2019 11:38:02 +0200

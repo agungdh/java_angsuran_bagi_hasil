@@ -90,6 +90,11 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="Total" pref="224" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LabelCari15" min="-2" pref="82" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Sisa" pref="224" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -172,7 +177,12 @@
                           <Component id="Total" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LabelCari14" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Sisa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelCari15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -429,6 +439,16 @@
     <Component class="javax.swing.JTextField" name="Total">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Sisa">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCari15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sisa Angsuran"/>
       </Properties>
     </Component>
   </SubComponents>
