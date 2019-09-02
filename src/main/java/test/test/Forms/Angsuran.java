@@ -39,6 +39,7 @@ import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.DBException;
 import org.javalite.activejdbc.LazyList;
 import test.test.Helpers.ADHhelper;
+import test.test.Models.AnggotaModel;
 import test.test.Models.AngsuranModel;
 import test.test.Models.PembiayaanModel;
 import test.test.Reports.Config;
@@ -102,12 +103,37 @@ public class Angsuran extends javax.swing.JFrame {
     }
 
     public void cariPembiayaan() {
-        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("SELECT * FROM pembiayaan WHERE no_pembiayaan = ?", Pembiayaan.getText());
+        Base.open();
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.where("no_pembiayaan = ?", Pembiayaan.getText());
+        Base.close();
+        
+        Base.open();
         if (pembiayaans.size() > 0) {
+            Base.close();
+            
+            Base.open();
             PembiayaanModel pembiayaan = pembiayaans.get(0);
+            Base.close();
             
+            Base.open();
+            AnggotaModel anggota = pembiayaan.parent(AnggotaModel.class);
+            Base.close();
             
+            Pokok.setValue(pembiayaan.getInteger("pokok"));
+            Bagi.setValue(pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu"));
+            Nama.setText(anggota.getString("nama"));
+            
+            IDPembiayaan = pembiayaan.getInteger("id");
+            
+            Base.open();
+        } else {
+            Pokok.setValue(0);
+            Bagi.setValue(0);
+            Nama.setText("");
+            
+            IDPembiayaan = 0;
         }
+        Base.close();
     }
     
     public void cari() {
@@ -133,10 +159,11 @@ public class Angsuran extends javax.swing.JFrame {
         try {
             for(AngsuranModel angsuran : angsurans) {       
                 PembiayaanModel pembiayaan = angsuran.parent(PembiayaanModel.class);
+                AnggotaModel anggota = pembiayaan.parent(AnggotaModel.class);
                 model.addRow(new Object[]{
                     angsuran.getId(),
                     pembiayaan.getString("no_pembiayaan"),
-                    pembiayaan.getString("nama"),
+                    anggota.getString("nama"),
                     ADHhelper.tanggalIndo(angsuran.getString("tanggal")),
                     ADHhelper.rupiah(angsuran.getInteger("pokok")),
                     ADHhelper.rupiah(angsuran.getInteger("basil")),
@@ -166,7 +193,7 @@ public class Angsuran extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT * FROM pembiayaan p, angsuran a WHERE a.id_pembiayaan = p.id AND (p.no_pembiayaan like ? OR p.nama like ?)", '%' + cari + '%', '%' + cari + '%');
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT a.* FROM pembiayaan p, angsuran a, anggota ag WHERE a.id_pembiayaan = p.id AND p.id_anggota = ag.id AND (p.no_pembiayaan like ? OR ag.nama like ?)", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
         loadTableHelper(angsurans);
@@ -204,7 +231,7 @@ public class Angsuran extends javax.swing.JFrame {
         Base.open();
         try {
             AngsuranModel angsuran = new AngsuranModel();
-            angsuran.set("id_pembiayaan", selectedComboPembiayaanIndex);
+            angsuran.set("id_pembiayaan", IDPembiayaan);
             angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
             angsuran.set("basil", Bagi.getValue());
             angsuran.set("pokok", Pokok.getValue());
@@ -219,7 +246,7 @@ public class Angsuran extends javax.swing.JFrame {
         Base.open();
         try {
             AngsuranModel angsuran = AngsuranModel.findById(ID);
-            angsuran.set("id_pembiayaan", selectedComboPembiayaanIndex);
+            angsuran.set("id_pembiayaan", IDPembiayaan);
             angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
             angsuran.set("basil", Bagi.getValue());
             angsuran.set("pokok", Pokok.getValue());
@@ -231,7 +258,7 @@ public class Angsuran extends javax.swing.JFrame {
     }
 
     private void resetForm() {
-        No.setSelectedIndex(0);
+        Pembiayaan.setText("");
         Nama.setText("");
         Pokok.setValue(0);
         Bagi.setValue(0);
@@ -513,8 +540,12 @@ public class Angsuran extends javax.swing.JFrame {
             Base.open();
             AngsuranModel angsuran = AngsuranModel.findById(ID);
             Base.close();
+
+            Base.open();
+            PembiayaanModel pembiayaan = angsuran.parent(PembiayaanModel.class);
+            Base.close();
             
-            No.setSelectedIndex(comboPembiayaanID.indexOf(Integer.parseInt(angsuran.getString("id_pembiayaan"))));
+            Pembiayaan.setText(pembiayaan.getString("no_pembiayaan"));
             try {
                 Tanggal.setDate(ADHhelper.getTanggalFromDB(angsuran.getString("tanggal")));
             } catch (ParseException ex) {
@@ -569,11 +600,11 @@ public class Angsuran extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
         } else {
             Base.open();
-            LazyList<AngsuranModel> angsurans = AngsuranModel.where("id_pembiayaan = ?", selectedComboPembiayaanIndex);
+            LazyList<AngsuranModel> angsurans = AngsuranModel.where("id_pembiayaan = ?", IDPembiayaan);
             Base.close();
             
             Base.open();
-            PembiayaanModel pembiayaan = PembiayaanModel.findById(selectedComboPembiayaanIndex);
+            PembiayaanModel pembiayaan = PembiayaanModel.findById(IDPembiayaan);
             Base.close();
             
             int pokok = pembiayaan.getInteger("pokok");
@@ -602,7 +633,7 @@ public class Angsuran extends javax.swing.JFrame {
                 for (int i = 1; i <= sisa; i++) {
                     Base.open();
                     AngsuranModel angsuran = new AngsuranModel();
-                    angsuran.set("id_pembiayaan", selectedComboPembiayaanIndex);
+                    angsuran.set("id_pembiayaan", IDPembiayaan);
                     try {
                         angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
                     } catch (ParseException ex) {
@@ -616,7 +647,7 @@ public class Angsuran extends javax.swing.JFrame {
                 
                 if (sisa >= 2) {
                     Base.open();
-                    LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? LIMIT 2", selectedComboPembiayaanIndex);
+                    LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? LIMIT 2", IDPembiayaan);
                     Base.close();
                     
                     Base.open();
