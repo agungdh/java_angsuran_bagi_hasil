@@ -240,7 +240,7 @@ public class Pembiayaan extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findBySQL("SELECT * FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id AND p.no_pembiayaan LIKE ? OR a.nama LIKE ?", '%' + cari + '%', '%' + cari + '%');
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findBySQL("SELECT p.* FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id AND (p.no_pembiayaan LIKE ? OR a.nama LIKE ?)", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
         loadTableHelper(pembiayaans);
