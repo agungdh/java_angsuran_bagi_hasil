@@ -61,6 +61,21 @@ public class Angsuran extends javax.swing.JFrame {
     private int valWaktu;
     private Date valTanggal;
     private Date valJatuh;
+    
+    int pokok;
+    int basil;
+    int totalSebelumDenda;
+    int jumlahAngsuran;
+    int angsuranKe;
+    int bulanJava;
+    int bulanNormal;
+    double denda;
+    int sisaPeriodeAngsuran;
+    int sisaAngsuran;
+    Date periodeAngsuran_raw;
+    int telatHari;
+    Date tanggalAngsuran;
+            
     /**
      * Creates new form PangkatGol
      */
@@ -136,9 +151,9 @@ public class Angsuran extends javax.swing.JFrame {
             AnggotaModel anggota = pembiayaan.parent(AnggotaModel.class);
             Base.close();
             
-            int pokok = pembiayaan.getInteger("pokok");
-            int basil = pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu");
-            int totalSebelumDenda = pokok + basil;
+            pokok = pembiayaan.getInteger("pokok");
+            basil = pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu");
+            totalSebelumDenda = pokok + basil;
             
             Pokok.setValue(pokok);
             Bagi.setValue(basil);
@@ -148,12 +163,12 @@ public class Angsuran extends javax.swing.JFrame {
             
             Base.open();
             LazyList<AngsuranModel> angsurans = AngsuranModel.where("id_pembiayaan = ?", IDPembiayaan);
-            int jumlahAngsuran = angsurans.size();
-            int angsuranKe = jumlahAngsuran + 1;
+            jumlahAngsuran = angsurans.size();
+            angsuranKe = jumlahAngsuran + 1;
             try {
-                Date periodeAngsuran_raw = ADHhelper.dateTambahBulan(ADHhelper.getTanggalFromDB(pembiayaan.getString("tanggal")), angsuranKe);
-                int bulanJava = ADHhelper.dateGetMonth(periodeAngsuran_raw);
-                int bulanNormal = bulanJava + 1;
+                periodeAngsuran_raw = ADHhelper.dateTambahBulan(ADHhelper.getTanggalFromDB(pembiayaan.getString("tanggal")), angsuranKe);
+                bulanJava = ADHhelper.dateGetMonth(periodeAngsuran_raw);
+                bulanNormal = bulanJava + 1;
                 
                 String bulanPeriodeAngsuran = ADHhelper.bulan(bulanNormal);
                 String tahunPeriodeAngsuran = String.valueOf(ADHhelper.dateGetYear(periodeAngsuran_raw));
@@ -164,9 +179,9 @@ public class Angsuran extends javax.swing.JFrame {
                 String jatuhTempo = ADHhelper.tanggalIndo(ADHhelper.parseTanggal(periodeAngsuran_raw));
                 Jatuh.setText(jatuhTempo);
                 
-                int telatHari = ADHhelper.dateDayBetween(periodeAngsuran_raw, Tanggal.getDate());
+                telatHari = ADHhelper.dateDayBetween(periodeAngsuran_raw, Tanggal.getDate());
                 if (telatHari > 0) {
-                    double denda = ((totalSebelumDenda * 0.25) / 100) * telatHari;
+                    denda = ((totalSebelumDenda * 0.25) / 100) * telatHari;
                     Denda.setText(ADHhelper.rupiah((int)denda));                
                     Total.setText(ADHhelper.rupiah((int)denda + totalSebelumDenda));                
                 } else {
@@ -180,8 +195,8 @@ public class Angsuran extends javax.swing.JFrame {
             
             Angsuran.setText(String.valueOf(angsuranKe));
             
-            int sisaPeriodeAngsuran = pembiayaan.getInteger("waktu") - jumlahAngsuran;
-            int sisaAngsuran;
+            sisaPeriodeAngsuran = pembiayaan.getInteger("waktu") - jumlahAngsuran;
+            
             if (sisaPeriodeAngsuran > 0) {
                 sisaAngsuran = (pokok + basil) * sisaPeriodeAngsuran;
             } else {
@@ -249,6 +264,8 @@ public class Angsuran extends javax.swing.JFrame {
         TablePegawai.setModel(model);
         
         setState("index");
+        
+        btnCetak.setEnabled(false);
     }
     
     private void formatTextInteger() {
@@ -379,6 +396,7 @@ public class Angsuran extends javax.swing.JFrame {
         Total = new javax.swing.JTextField();
         Sisa = new javax.swing.JTextField();
         LabelCari15 = new javax.swing.JLabel();
+        btnCetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Angsuran");
@@ -542,6 +560,13 @@ public class Angsuran extends javax.swing.JFrame {
 
         LabelCari15.setText("Sisa Angsuran");
 
+        btnCetak.setText("CETAK");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -570,7 +595,6 @@ public class Angsuran extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(Nama)
                                         .addComponent(Pembiayaan)))
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(LabelCari9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -578,7 +602,12 @@ public class Angsuran extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(Periode)
-                                        .addComponent(Bagi))))
+                                        .addComponent(Bagi)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(38, 38, 38)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelCari11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -667,7 +696,9 @@ public class Angsuran extends javax.swing.JFrame {
                             .addComponent(Sisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LabelCari15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(btnCetak))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -704,6 +735,7 @@ public class Angsuran extends javax.swing.JFrame {
             Pembiayaan.setText(pembiayaan.getString("no_pembiayaan"));
             try {
                 Tanggal.setDate(ADHhelper.getTanggalFromDB(angsuran.getString("tanggal")));
+                tanggalAngsuran = ADHhelper.getTanggalFromDB(angsuran.getString("tanggal"));
             } catch (ParseException ex) {
                 Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -711,6 +743,8 @@ public class Angsuran extends javax.swing.JFrame {
             Bagi.setValue(angsuran.getInteger("basil"));
             
             setState("edit");
+            
+            btnCetak.setEnabled(true);
         }
     }//GEN-LAST:event_TablePegawaiMouseClicked
 
@@ -852,6 +886,32 @@ public class Angsuran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PembiayaanActionPerformed
 
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/slip.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/slip.jasper";
+            JasperCompileManager.compileReport(fileName);
+            
+            Map param= new HashMap();
+            param.put("tanggal", ADHhelper.tanggalIndo(ADHhelper.parseTanggal(tanggalAngsuran)));
+            param.put("terima_dari", Nama.getText());
+            param.put("angsuran_ke", angsuranKe);
+            param.put("pokok", ADHhelper.rupiah(pokok));
+            param.put("basil", ADHhelper.rupiah(basil));
+            param.put("denda", ADHhelper.rupiah((int)denda));
+            param.put("total", ADHhelper.rupiah((int)denda + totalSebelumDenda));
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+    }//GEN-LAST:event_btnCetakActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -980,6 +1040,7 @@ public class Angsuran extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser Tanggal;
     private javax.swing.JTextField TextCari;
     private javax.swing.JTextField Total;
+    private javax.swing.JButton btnCetak;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -57,7 +57,6 @@
                                       <Component id="Pembiayaan" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jButton1" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="LabelCari9" min="-2" pref="82" max="-2" attributes="0"/>
@@ -68,6 +67,12 @@
                                       <Component id="Periode" max="32767" attributes="0"/>
                                       <Component id="Bagi" max="32767" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jButton1" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnCetak" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -183,7 +188,10 @@
                           <Component id="LabelCari15" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCetak" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -450,6 +458,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sisa Angsuran"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCetak">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CETAK"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCetakActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
