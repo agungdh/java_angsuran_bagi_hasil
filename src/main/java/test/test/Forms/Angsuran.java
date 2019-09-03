@@ -833,7 +833,7 @@ public class Angsuran extends javax.swing.JFrame {
             int jumlahAngsuran  = angsurans.size();
             Base.close();
             int sisa = waktu - jumlahAngsuran;
-            
+            int total;
             if (sisa >= 2) {
                 pokok = pokok * sisa;
                 basil = basil / waktu * (sisa - 2);
@@ -841,10 +841,12 @@ public class Angsuran extends javax.swing.JFrame {
                 pokok = pokok * sisa;
                 basil = basil / waktu * sisa;                
             }
+            total = pokok + basil;
             
             String kataKata = "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
                     + "Pokok: " + ADHhelper.rupiah(pokok) + "\n"
                     + "Bagi Hasil: " + ADHhelper.rupiah(basil) + "\n"
+                    + "Total: " + ADHhelper.rupiah(total) + "\n"
                     + "Lakukan Pelunasan ?";
             
             int rslt = JOptionPane.showConfirmDialog(null, kataKata);
@@ -876,8 +878,14 @@ public class Angsuran extends javax.swing.JFrame {
                     }
                     Base.close();
                 }
+
+                try {
+                    pembiayaan.set("tanggal_pelunasan", ADHhelper.parseTanggal(ADHhelper.dateToday()));
+                    pembiayaan.save();
+                } catch (ParseException ex) {
+                    Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            
             resetForm();
             loadTable();
         }
