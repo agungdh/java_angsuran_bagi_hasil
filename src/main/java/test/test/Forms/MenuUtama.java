@@ -6,7 +6,20 @@
 package test.test.Forms;
 
 import java.awt.Image;
+import java.sql.Connection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.ImageIcon;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import test.test.Reports.Config;
 
 /**
  *
@@ -155,13 +168,12 @@ public class MenuUtama extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(22, 50, Short.MAX_VALUE)
@@ -252,7 +264,23 @@ public class MenuUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        try{
+            Config objkoneksi = new Config();
+            Connection con = objkoneksi.bukakoneksi();
+            String fileName="src/main/java/test/test/Reports/laporan.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/laporan.jasper";
+            JasperCompileManager.compileReport(fileName);
+                        
+            Map param= new HashMap();
+            
+            
+            JasperFillManager.fillReport(filetoFill, param, con);
+            JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
+            JasperViewer.viewReport(jp,false);
+
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
