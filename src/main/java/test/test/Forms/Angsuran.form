@@ -28,13 +28,55 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel1" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel3" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel3" alignment="1" min="-2" max="-2" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel3">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="0" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LabelCari15" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="Sisa" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LabelCari14" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="Total" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LabelCari13" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="Denda" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LabelCari12" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="Jatuh" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="LabelCari4" min="-2" pref="82" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -45,7 +87,6 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="Tanggal" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jPanel2" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="LabelCari2" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
@@ -68,193 +109,28 @@
                                       <Component id="Bagi" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnPelunasan" min="-2" pref="110" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LabelCari11" min="-2" pref="82" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnCetak" min="-2" pref="106" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="Angsuran" min="-2" pref="222" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari11" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Angsuran" pref="224" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari12" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Jatuh" pref="224" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari13" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Denda" pref="224" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari14" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Total" pref="224" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabelCari15" min="-2" pref="82" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Sisa" pref="224" max="32767" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="LabelCari" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TextCari" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="ScrollPane" pref="566" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="TextCari" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="LabelCari" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="TextCari" min="-2" pref="319" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ScrollPane" pref="0" max="32767" attributes="0"/>
+                      <Component id="ScrollPane" alignment="0" min="-2" pref="424" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabelCari1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Pembiayaan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabelCari2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Nama" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="LabelCari3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Tanggal" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabelCari4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Pokok" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabelCari9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Bagi" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Periode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Angsuran" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Jatuh" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Denda" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Total" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Sisa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabelCari15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnPelunasan" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnCetak" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-  </Layout>
-  <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="ScrollPane">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="TablePegawai">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="0" rowCount="0"/>
-            </Property>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TablePegawaiMouseClicked"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JTextField" name="TextCari">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextCariActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cari (No/Nama)"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="No Pembiayaan"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="374" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -262,211 +138,360 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="LabelCari1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Pembiayaan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LabelCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TextCari" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="LabelCari2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Nama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="LabelCari3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Tanggal" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="LabelCari4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Pokok" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="LabelCari9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Bagi" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Periode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelCari10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Angsuran" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelCari11" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Jatuh" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelCari12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Denda" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelCari13" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Total" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelCari14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Sisa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelCari15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="ScrollPane" alignment="0" min="-2" pref="378" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Container class="javax.swing.JScrollPane" name="ScrollPane">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="TablePegawai">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="0" rowCount="0"/>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TablePegawaiMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="LabelCari">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="24" style="1"/>
+              <Font name="Comic Sans MS" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ANGSURAN"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cari (No/Nama)"/>
           </Properties>
         </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
-      </Properties>
+        <Component class="javax.swing.JTextField" name="TextCari">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextCariActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="0" type="rgb"/>
+            </Property>
+          </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ButtonTambahUbah" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="ButtonRefresh" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
-                  <Component id="ButtonResetHapus" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ButtonTambahUbah" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ButtonRefresh" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ButtonResetHapus" alignment="3" min="-2" max="-2" attributes="0"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ButtonTambahUbah" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="ButtonRefresh" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="ButtonResetHapus" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="btnCetak" min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JButton" name="ButtonRefresh">
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCetak" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ButtonRefresh" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonResetHapus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonTambahUbah" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="ButtonRefresh">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Refresh"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonRefreshActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonTambahUbah">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tambah"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonTambahUbahActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonResetHapus">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reset"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonResetHapusActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PELUNASAN"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnCetak">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CETAK"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCetakActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="LabelCari9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Refresh"/>
+            <Property name="text" type="java.lang.String" value="Basil"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Pembiayaan">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonRefreshActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PembiayaanActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ButtonTambahUbah">
+        <Component class="javax.swing.JTextField" name="Periode">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tambah"/>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari10">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Periode"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari11">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Angsuran Ke"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Angsuran">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Jatuh">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="No Pembiayaan"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari12">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Jatuh Tempo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari13">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Denda"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Denda">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari14">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Total"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Total">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Sisa">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari15">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sisa Angsuran"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nama"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Nama">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonTambahUbahActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NamaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ButtonResetHapus">
+        <Component class="javax.swing.JLabel" name="LabelCari3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reset"/>
+            <Property name="text" type="java.lang.String" value="Tanggal"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonResetHapusActionPerformed"/>
-          </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="LabelCari4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pokok"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="Tanggal">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="Pokok">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="Bagi">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="313" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Comic Sans MS" size="24" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="ANGSURAN"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="LabelCari2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nama"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Nama">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NamaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tanggal"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pokok"/>
-      </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="Tanggal">
-      <Properties>
-        <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="Pokok">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="Bagi">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Basil"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPelunasan">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="PELUNASAN"/>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPelunasanActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Pembiayaan">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PembiayaanActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Periode">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Periode"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Angsuran Ke"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Angsuran">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Jatuh">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari12">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Jatuh Tempo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari13">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Denda"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Denda">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari14">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Total"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Total">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="Sisa">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="LabelCari15">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sisa Angsuran"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCetak">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CETAK"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCetakActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>
