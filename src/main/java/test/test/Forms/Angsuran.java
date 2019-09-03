@@ -204,7 +204,7 @@ public class Angsuran extends javax.swing.JFrame {
             }
             
             Sisa.setText(ADHhelper.rupiah(sisaAngsuran));
-            
+            btnPelunasan.setEnabled(true);
             Base.open();
         } else {
             Pokok.setValue(0);
@@ -217,7 +217,7 @@ public class Angsuran extends javax.swing.JFrame {
             Denda.setText("");
             Total.setText("");
             Sisa.setText("");
-            
+            btnPelunasan.setEnabled(false);
             IDPembiayaan = 0;
         }
         Base.close();
@@ -382,7 +382,7 @@ public class Angsuran extends javax.swing.JFrame {
         Pokok = new javax.swing.JSpinner();
         Bagi = new javax.swing.JSpinner();
         LabelCari9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnPelunasan = new javax.swing.JButton();
         Pembiayaan = new javax.swing.JTextField();
         Periode = new javax.swing.JTextField();
         LabelCari10 = new javax.swing.JLabel();
@@ -523,10 +523,11 @@ public class Angsuran extends javax.swing.JFrame {
 
         LabelCari9.setText("Basil");
 
-        jButton1.setText("PELUNASAN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPelunasan.setText("PELUNASAN");
+        btnPelunasan.setEnabled(false);
+        btnPelunasan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPelunasanActionPerformed(evt);
             }
         });
 
@@ -604,7 +605,7 @@ public class Angsuran extends javax.swing.JFrame {
                                         .addComponent(Periode)
                                         .addComponent(Bagi)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPelunasan, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(38, 38, 38)))
@@ -697,7 +698,7 @@ public class Angsuran extends javax.swing.JFrame {
                             .addComponent(LabelCari15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(btnPelunasan)
                             .addComponent(btnCetak))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -813,7 +814,7 @@ public class Angsuran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NamaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPelunasanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPelunasanActionPerformed
         if (Tanggal.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Form Tanggal Masih Kosong !!!");
         } else {
@@ -880,7 +881,7 @@ public class Angsuran extends javax.swing.JFrame {
             resetForm();
             loadTable();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPelunasanActionPerformed
 
     private void PembiayaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PembiayaanActionPerformed
         // TODO add your handling code here:
@@ -1041,7 +1042,7 @@ public class Angsuran extends javax.swing.JFrame {
     private javax.swing.JTextField TextCari;
     private javax.swing.JTextField Total;
     private javax.swing.JButton btnCetak;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPelunasan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
