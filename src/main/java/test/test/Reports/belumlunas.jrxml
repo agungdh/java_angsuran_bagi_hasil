@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="belumlunas" language="groovy" pageWidth="471" pageHeight="595" orientation="Landscape" columnWidth="431" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
-	<property name="ireport.zoom" value="4.1772481694156705"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="132"/>
+	<property name="ireport.zoom" value="2.3579476910000103"/>
+	<property name="ireport.x" value="474"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT a.nama, p.basil, p.pokok, p.basil + p.pokok total
 FROM pembiayaan p, anggota a
@@ -88,27 +88,24 @@ AND p.tanggal_pelunasan IS NULL]]>
 			<rectangle>
 				<reportElement x="115" y="0" width="96" height="20" uuid="ad96edbd-4c40-45e4-ab8e-dea8c1738c11"/>
 			</rectangle>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="115" y="0" width="96" height="20" uuid="85871297-a59b-4f7f-be5f-b680bf2c02b0"/>
 				<textFieldExpression><![CDATA[$F{pokok}]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement x="211" y="0" width="109" height="20" uuid="f00df8be-f39b-4e1d-9839-0f96528f7496"/>
 			</rectangle>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="211" y="0" width="109" height="20" uuid="b947ba7b-ebd0-43bc-85c2-07de98074f36"/>
 				<textFieldExpression><![CDATA[$F{basil}]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement x="320" y="0" width="110" height="20" uuid="57e6a660-2ee1-4cd9-a1bd-d8b731df97f3"/>
 			</rectangle>
-			<textField>
-				<reportElement x="320" y="0" width="110" height="20" uuid="023ea917-2030-45d6-9aa2-1122616c11ac"/>
+			<textField pattern="#,##0">
+				<reportElement x="321" y="0" width="110" height="20" uuid="023ea917-2030-45d6-9aa2-1122616c11ac"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="50"/>
-	</columnFooter>
 </jasperReport>
