@@ -702,11 +702,20 @@ public class Pembiayaan extends javax.swing.JFrame {
                 } else {
                     Base.close();
                     
-                    tambahData();
-                    resetForm();
-                    loadTable();
-                    
                     Base.open();
+                    LazyList<PembiayaanModel> pembiayaansBelumLunas = PembiayaanModel.findBySQL("SELECT * FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id AND p.tanggal_pelunasan IS NULL AND a.id = ?", selectedComboAnggotaIndex);
+                    
+                    if (pembiayaansBelumLunas.size() > 0) {
+                        JOptionPane.showMessageDialog(null, "Anggota Sedang Mempunyai Pembiayaan Yang Belum Lunas !!!");
+                    } else {
+                        Base.close();
+                    
+                        tambahData();
+                        resetForm();
+                        loadTable();
+
+                        Base.open();
+                    }
                 }
                 Base.close();
             }
