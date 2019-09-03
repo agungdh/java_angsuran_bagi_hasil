@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -267,12 +269,14 @@ public class MenuUtama extends javax.swing.JFrame {
         try{
             Config objkoneksi = new Config();
             Connection con = objkoneksi.bukakoneksi();
-            String fileName="src/main/java/test/test/Reports/laporan.jrxml";
-            String filetoFill="src/main/java/test/test/Reports/laporan.jasper";
+            String fileName="src/main/java/test/test/Reports/belumlunas.jrxml";
+            String filetoFill="src/main/java/test/test/Reports/belumlunas.jasper";
             JasperCompileManager.compileReport(fileName);
                         
             Map param= new HashMap();
             
+            java.util.Locale locale = new Locale( "id", "ID" );
+            param.put( JRParameter.REPORT_LOCALE, locale );
             
             JasperFillManager.fillReport(filetoFill, param, con);
             JasperPrint jp=JasperFillManager.fillReport(filetoFill, param,con);
