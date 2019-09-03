@@ -826,68 +826,77 @@ public class Angsuran extends javax.swing.JFrame {
             PembiayaanModel pembiayaan = PembiayaanModel.findById(IDPembiayaan);
             Base.close();
             
-            int pokok = pembiayaan.getInteger("pokok");
-            int basil = pembiayaan.getInteger("basil");
-            int waktu = pembiayaan.getInteger("waktu");
             Base.open();
-            int jumlahAngsuran  = angsurans.size();
-            Base.close();
-            int sisa = waktu - jumlahAngsuran;
-            int total;
-            if (sisa >= 2) {
-                pokok = pokok * sisa;
-                basil = basil / waktu * (sisa - 2);
-            } else {
-                pokok = pokok * sisa;
-                basil = basil / waktu * sisa;                
-            }
-            total = pokok + basil;
-            
-            String kataKata = "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
-                    + "Pokok: " + ADHhelper.rupiah(pokok) + "\n"
-                    + "Bagi Hasil: " + ADHhelper.rupiah(basil) + "\n"
-                    + "Total: " + ADHhelper.rupiah(total) + "\n"
-                    + "Lakukan Pelunasan ?";
-            
-            int rslt = JOptionPane.showConfirmDialog(null, kataKata);
-            if (rslt == JOptionPane.YES_OPTION) {
-                for (int i = 1; i <= sisa; i++) {
-                    Base.open();
-                    AngsuranModel angsuran = new AngsuranModel();
-                    angsuran.set("id_pembiayaan", IDPembiayaan);
+            if (pembiayaan.getString("tanggal_pelunasan") == null) {
+                Base.close();
+                int pokok = pembiayaan.getInteger("pokok");
+                int basil = pembiayaan.getInteger("basil");
+                int waktu = pembiayaan.getInteger("waktu");
+                Base.open();
+                int jumlahAngsuran  = angsurans.size();
+                Base.close();
+                int sisa = waktu - jumlahAngsuran;
+                int total;
+                if (sisa >= 2) {
+                    pokok = pokok * sisa;
+                    basil = basil / waktu * (sisa - 2);
+                } else {
+                    pokok = pokok * sisa;
+                    basil = basil / waktu * sisa;                
+                }
+                total = pokok + basil;
+
+                String kataKata = "Untuk pelunasan diharuskan membayar seluruh kekurangan yang ada.\n"
+                        + "Pokok: " + ADHhelper.rupiah(pokok) + "\n"
+                        + "Bagi Hasil: " + ADHhelper.rupiah(basil) + "\n"
+                        + "Total: " + ADHhelper.rupiah(total) + "\n"
+                        + "Lakukan Pelunasan ?";
+
+                int rslt = JOptionPane.showConfirmDialog(null, kataKata);
+                if (rslt == JOptionPane.YES_OPTION) {
+                    for (int i = 1; i <= sisa; i++) {
+                        Base.open();
+                        AngsuranModel angsuran = new AngsuranModel();
+                        angsuran.set("id_pembiayaan", IDPembiayaan);
+                        try {
+                            angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+                        } catch (ParseException ex) {
+                            Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        angsuran.set("pokok", pembiayaan.getInteger("pokok"));
+                        angsuran.set("basil", pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu"));
+                        angsuran.save();
+                        Base.close();
+                    }
+
+                    if (sisa >= 2) {
+                        Base.open();
+                        LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? LIMIT 2", IDPembiayaan);
+                        Base.close();
+
+                        Base.open();
+                        for(AngsuranModel angsuran : angsuransCheck) {
+                            angsuran.set("basil", 0);
+                            angsuran.save();
+                        }
+                        Base.close();
+                    }
+
                     try {
-                        angsuran.set("tanggal", ADHhelper.parseTanggal(Tanggal.getDate()));
+                        pembiayaan.set("tanggal_pelunasan", ADHhelper.parseTanggal(ADHhelper.dateToday()));
+                        Base.open();
+                        pembiayaan.save();
+                        Base.close();
                     } catch (ParseException ex) {
                         Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    angsuran.set("pokok", pembiayaan.getInteger("pokok"));
-                    angsuran.set("basil", pembiayaan.getInteger("basil") / pembiayaan.getInteger("waktu"));
-                    angsuran.save();
-                    Base.close();
                 }
-                
-                if (sisa >= 2) {
-                    Base.open();
-                    LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? LIMIT 2", IDPembiayaan);
-                    Base.close();
-                    
-                    Base.open();
-                    for(AngsuranModel angsuran : angsuransCheck) {
-                        angsuran.set("basil", 0);
-                        angsuran.save();
-                    }
-                    Base.close();
-                }
-
-                try {
-                    pembiayaan.set("tanggal_pelunasan", ADHhelper.parseTanggal(ADHhelper.dateToday()));
-                    pembiayaan.save();
-                } catch (ParseException ex) {
-                    Logger.getLogger(Angsuran.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                resetForm();
+                loadTable();
+            } else {
+                Base.close();
+                JOptionPane.showMessageDialog(null, "Pembiayaan Sudah Lunas !!!");
             }
-            resetForm();
-            loadTable();
         }
     }//GEN-LAST:event_btnPelunasanActionPerformed
 
