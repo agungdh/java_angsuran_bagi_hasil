@@ -325,6 +325,14 @@ public class Angsuran extends javax.swing.JFrame {
             angsuran.set("basil", Bagi.getValue());
             angsuran.set("pokok", Pokok.getValue());
             angsuran.save();
+            
+            PembiayaanModel pby = PembiayaanModel.findById(IDPembiayaan);
+            LazyList<AngsuranModel> angs = AngsuranModel.where("id_pembiayaan = ?", IDPembiayaan);
+            
+            if (angs.size() >= pby.getInteger("waktu")) {
+                pby.set("tanggal_pelunasan", ADHhelper.parseTanggal(Tanggal.getDate()));
+                pby.save();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -779,7 +787,16 @@ public class Angsuran extends javax.swing.JFrame {
                 if (pembiayaans.size() > 0) {
                     Base.close();
                     
-                    tambahData();
+                    Base.open();
+                    PembiayaanModel pby = PembiayaanModel.findById(IDPembiayaan);
+                    Base.close();
+                    
+                    if (pby.getString("tanggal_pelunasan") == null) {
+                        tambahData();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Pembiayaan Sudah Lunas !!!");
+                    }
+                   
                     resetForm();
                     loadTable();
                     
