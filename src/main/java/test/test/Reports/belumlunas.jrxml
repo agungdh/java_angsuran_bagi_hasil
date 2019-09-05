@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="belumlunas" language="groovy" pageWidth="471" pageHeight="595" orientation="Landscape" columnWidth="431" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
-	<property name="ireport.zoom" value="2.3579476910000103"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="belumlunas" language="groovy" pageWidth="500" pageHeight="595" orientation="Landscape" columnWidth="460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
+	<property name="ireport.zoom" value="1.464100000000007"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -20,13 +20,40 @@ AND p.tanggal_pelunasan IS NULL]]>
 	</field>
 	<field name="total" class="java.lang.Long"/>
 	<title>
-		<band height="37" splitType="Stretch">
+		<band height="124" splitType="Stretch">
 			<staticText>
-				<reportElement x="61" y="0" width="326" height="20" uuid="56d37945-411e-4707-9be9-1010d22bf216"/>
+				<reportElement x="62" y="83" width="326" height="20" uuid="56d37945-411e-4707-9be9-1010d22bf216"/>
 				<textElement>
 					<font size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN PEMBIAYAAN ANGGOTA BELUM LUNAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="42" width="334" height="20" uuid="f957498f-dba6-47ea-a1e3-5254259fc254"/>
+				<text><![CDATA[Badan Hukum No : 006454/BH/M.KUKM.2/XII/2017 Jl. Flamboyan NO.06 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="62" width="100" height="20" uuid="be8ac1fb-eb0b-46d9-81e9-27b00cbed92c"/>
+				<text><![CDATA[Mulyojati Metro Barat]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="82" width="460" height="1" uuid="32e88104-4f41-4b7b-a27f-5ad3586fd714"/>
+			</line>
+			<staticText>
+				<reportElement x="62" y="2" width="334" height="20" uuid="cbc8f09e-36c6-4c84-9e94-9d95a10685b8"/>
+				<text><![CDATA[    KOPERASI SIMPAN PINJAM DAN PEMBIAYAAN SYARIAH (KSPPS)]]></text>
+			</staticText>
+			<image>
+				<reportElement x="8" y="8" width="46" height="40" uuid="07f3e879-14c9-43f9-b3fa-632832231ac1"/>
+				<imageExpression><![CDATA["LOGO LAMA KOPERASI INDONESIA.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="413" y="14" width="47" height="48" uuid="1435d4a2-63c4-4cf2-a4bd-0bfc775e9755"/>
+				<imageExpression><![CDATA["kspps bum intan.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="186" y="22" width="110" height="20" uuid="f08bbb71-1225-4458-8dba-c905fa74c998"/>
+				<text><![CDATA[BINA UMAT MADANI (BUM)]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -61,10 +88,10 @@ AND p.tanggal_pelunasan IS NULL]]>
 				<text><![CDATA[Bagi Hasil]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="320" y="0" width="110" height="20" uuid="a57d433a-8801-467b-a547-24a572f5f659"/>
+				<reportElement x="320" y="0" width="140" height="20" uuid="a57d433a-8801-467b-a547-24a572f5f659"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="320" y="0" width="110" height="20" uuid="d79ff356-d7d8-4191-96bb-3534b1ca9891"/>
+				<reportElement x="320" y="0" width="139" height="20" uuid="d79ff356-d7d8-4191-96bb-3534b1ca9891"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 		</band>
@@ -100,10 +127,10 @@ AND p.tanggal_pelunasan IS NULL]]>
 				<textFieldExpression><![CDATA[$F{basil}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="320" y="0" width="110" height="20" uuid="57e6a660-2ee1-4cd9-a1bd-d8b731df97f3"/>
+				<reportElement x="320" y="0" width="139" height="20" uuid="57e6a660-2ee1-4cd9-a1bd-d8b731df97f3"/>
 			</rectangle>
 			<textField pattern="#,##0">
-				<reportElement x="321" y="0" width="110" height="20" uuid="023ea917-2030-45d6-9aa2-1122616c11ac"/>
+				<reportElement x="321" y="0" width="139" height="20" uuid="023ea917-2030-45d6-9aa2-1122616c11ac"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 		</band>

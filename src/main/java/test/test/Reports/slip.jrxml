@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="slip" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="638b4ef9-52ed-4f64-a35f-f2e38b1513bc">
-	<property name="ireport.zoom" value="1.1000000000000025"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="slip" language="groovy" pageWidth="595" pageHeight="500" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="638b4ef9-52ed-4f64-a35f-f2e38b1513bc">
+	<property name="ireport.zoom" value="1.0000000000000029"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="19"/>
+	<property name="ireport.y" value="3"/>
 	<parameter name="tanggal" class="java.lang.String"/>
 	<parameter name="terima_dari" class="java.lang.String"/>
 	<parameter name="angsuran_ke" class="java.lang.String"/>
@@ -11,115 +11,139 @@
 	<parameter name="denda" class="java.lang.String"/>
 	<parameter name="total" class="java.lang.String"/>
 	<title>
-		<band height="381" splitType="Stretch">
+		<band height="430" splitType="Stretch">
 			<staticText>
-				<reportElement x="177" y="0" width="207" height="21" uuid="c5c232f0-d218-4039-82bf-b0ff3e1fe9a3"/>
+				<reportElement x="217" y="96" width="137" height="21" uuid="c5c232f0-d218-4039-82bf-b0ff3e1fe9a3"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SLIP ANGSURAN PINJAMAN]]></text>
 			</staticText>
-			<line>
-				<reportElement x="0" y="35" width="555" height="1" uuid="00791ee2-9f1e-463a-ba4e-d628fad872f4"/>
-			</line>
 			<staticText>
-				<reportElement x="0" y="79" width="100" height="20" uuid="2126b0ef-550b-4327-b00c-044ea7c19a0e"/>
+				<reportElement x="7" y="178" width="100" height="20" uuid="2126b0ef-550b-4327-b00c-044ea7c19a0e"/>
 				<text><![CDATA[Terima Dari]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="99" width="100" height="20" uuid="6ad88ca4-531e-4457-a409-734838efa912"/>
+				<reportElement x="7" y="198" width="100" height="20" uuid="6ad88ca4-531e-4457-a409-734838efa912"/>
 				<text><![CDATA[Angsuran Ke]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="119" width="100" height="20" uuid="bd1f709f-5efc-4ad7-93df-e9994d17b7f6"/>
+				<reportElement x="7" y="218" width="100" height="20" uuid="bd1f709f-5efc-4ad7-93df-e9994d17b7f6"/>
 				<text><![CDATA[Pokok]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="139" width="100" height="20" uuid="79e7e2bc-a83a-4b46-b95d-7f7cade61dcb"/>
+				<reportElement x="7" y="238" width="100" height="20" uuid="79e7e2bc-a83a-4b46-b95d-7f7cade61dcb"/>
 				<text><![CDATA[Bagi Hasil]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="159" width="100" height="20" uuid="ece5ea44-7142-4c3e-baca-a8e600059733"/>
+				<reportElement x="7" y="258" width="100" height="20" uuid="ece5ea44-7142-4c3e-baca-a8e600059733"/>
 				<text><![CDATA[Denda]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="179" width="100" height="20" uuid="21adf141-4ea7-40c7-917a-93df46d2a03d"/>
+				<reportElement x="7" y="278" width="100" height="20" uuid="21adf141-4ea7-40c7-917a-93df46d2a03d"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="59" width="100" height="20" uuid="66bb4905-9cc1-45f8-9d86-274b0f5d6d40"/>
+				<reportElement x="7" y="158" width="100" height="20" uuid="66bb4905-9cc1-45f8-9d86-274b0f5d6d40"/>
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="59" width="10" height="20" uuid="b595856d-b472-4cee-9d70-189bd0e1e25b"/>
+				<reportElement x="107" y="158" width="10" height="20" uuid="b595856d-b472-4cee-9d70-189bd0e1e25b"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="79" width="10" height="20" uuid="2bf84394-cab2-4062-8509-b23f34afc276"/>
+				<reportElement x="107" y="178" width="10" height="20" uuid="2bf84394-cab2-4062-8509-b23f34afc276"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="99" width="10" height="20" uuid="8fed2df4-bf9f-4f27-8674-e291c94d182f"/>
+				<reportElement x="107" y="198" width="10" height="20" uuid="8fed2df4-bf9f-4f27-8674-e291c94d182f"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="119" width="10" height="20" uuid="5f9c4db2-6366-4e01-82ab-0e77770d0b76"/>
+				<reportElement x="107" y="218" width="10" height="20" uuid="5f9c4db2-6366-4e01-82ab-0e77770d0b76"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="139" width="10" height="20" uuid="6728fcf9-b0ac-4f1b-a68d-d4424a6e7d84"/>
+				<reportElement x="107" y="238" width="10" height="20" uuid="6728fcf9-b0ac-4f1b-a68d-d4424a6e7d84"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="159" width="10" height="20" uuid="ed402eb6-4475-4ab4-9974-7cd722d266d1"/>
+				<reportElement x="107" y="258" width="10" height="20" uuid="ed402eb6-4475-4ab4-9974-7cd722d266d1"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="179" width="10" height="20" uuid="9b0ef3cb-d927-4c7a-9b05-deda84907f0a"/>
+				<reportElement x="107" y="278" width="10" height="20" uuid="9b0ef3cb-d927-4c7a-9b05-deda84907f0a"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="110" y="59" width="100" height="20" uuid="92d570e8-eb02-40de-98f8-b699ec76b92a"/>
+				<reportElement x="117" y="158" width="100" height="20" uuid="92d570e8-eb02-40de-98f8-b699ec76b92a"/>
 				<textFieldExpression><![CDATA[$P{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="79" width="100" height="20" uuid="468f0af2-0b17-4b70-beb9-8d9fc37b2490"/>
+				<reportElement x="117" y="178" width="100" height="20" uuid="468f0af2-0b17-4b70-beb9-8d9fc37b2490"/>
 				<textFieldExpression><![CDATA[$P{terima_dari}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="99" width="100" height="20" uuid="1a01f8f1-b2fa-4108-b55d-ae2e69c8ba0d"/>
+				<reportElement x="117" y="198" width="100" height="20" uuid="1a01f8f1-b2fa-4108-b55d-ae2e69c8ba0d"/>
 				<textFieldExpression><![CDATA[$P{angsuran_ke}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="119" width="100" height="20" uuid="e0f9672b-7c45-4403-9f2b-9a38df10342e"/>
+				<reportElement x="117" y="218" width="100" height="20" uuid="e0f9672b-7c45-4403-9f2b-9a38df10342e"/>
 				<textFieldExpression><![CDATA[$P{pokok}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="139" width="100" height="20" uuid="48eaa88e-4ab9-477f-9f44-225b44b23e60"/>
+				<reportElement x="117" y="238" width="100" height="20" uuid="48eaa88e-4ab9-477f-9f44-225b44b23e60"/>
 				<textFieldExpression><![CDATA[$P{basil}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="159" width="100" height="20" uuid="9cd46057-b45a-4dd3-87ce-e5104b200eca"/>
+				<reportElement x="117" y="258" width="100" height="20" uuid="9cd46057-b45a-4dd3-87ce-e5104b200eca"/>
 				<textFieldExpression><![CDATA[$P{denda}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="110" y="179" width="100" height="20" uuid="a76cee2f-83d9-41ff-a92f-20e87607c3c0"/>
+				<reportElement x="117" y="278" width="100" height="20" uuid="a76cee2f-83d9-41ff-a92f-20e87607c3c0"/>
 				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="85" y="248" width="28" height="20" uuid="a91809e1-e28e-4370-893a-9c62e9290be3"/>
+				<reportElement x="88" y="367" width="28" height="20" uuid="a91809e1-e28e-4370-893a-9c62e9290be3"/>
 				<text><![CDATA[Kasir]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="382" y="248" width="44" height="20" uuid="6ab935f8-bf89-4771-b4c8-a3ca1a970ea4"/>
+				<reportElement x="385" y="367" width="44" height="20" uuid="6ab935f8-bf89-4771-b4c8-a3ca1a970ea4"/>
 				<text><![CDATA[Penyetor]]></text>
 			</staticText>
 			<line>
-				<reportElement x="54" y="309" width="100" height="1" uuid="20576ca7-988d-4061-a9a2-a666ab85b22d"/>
+				<reportElement x="57" y="428" width="100" height="1" uuid="20576ca7-988d-4061-a9a2-a666ab85b22d"/>
 			</line>
 			<line>
-				<reportElement x="354" y="308" width="100" height="1" uuid="e63b3343-25a3-4fdc-9aa5-6188a40422fc"/>
+				<reportElement x="357" y="427" width="100" height="1" uuid="e63b3343-25a3-4fdc-9aa5-6188a40422fc"/>
 			</line>
+			<staticText>
+				<reportElement x="107" y="2" width="334" height="20" uuid="4cf295e6-a267-428e-87e9-629b82ae1cc1"/>
+				<text><![CDATA[    KOPERASI SIMPAN PINJAM DAN PEMBIAYAAN SYARIAH (KSPPS)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="22" width="110" height="20" uuid="614f4931-fc34-4fd3-b067-0e3cbebc579d"/>
+				<text><![CDATA[BINA UMAT MADANI (BUM)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="62" width="100" height="20" uuid="2f3fad5c-5e77-4bc6-9e6f-25a95f32de1d"/>
+				<text><![CDATA[Mulyojati Metro Barat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="42" width="334" height="20" uuid="31befedb-1245-4418-994f-95b42c284089"/>
+				<text><![CDATA[Badan Hukum No : 006454/BH/M.KUKM.2/XII/2017 Jl. Flamboyan NO.06 ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="82" width="555" height="1" uuid="82656366-5410-4716-8574-527f882092aa"/>
+			</line>
+			<image>
+				<reportElement x="458" y="14" width="47" height="48" uuid="d42b1f0a-deef-4b2f-b9b2-56b71adec2cd"/>
+				<imageExpression><![CDATA["kspps bum intan.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="53" y="8" width="46" height="40" uuid="86e06a15-1ff1-4103-9077-593e06b268bd"/>
+				<imageExpression><![CDATA["LOGO LAMA KOPERASI INDONESIA.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 </jasperReport>
