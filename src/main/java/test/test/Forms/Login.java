@@ -69,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,7 +97,7 @@ public class Login extends javax.swing.JFrame {
 
         Gambar.setFont(new java.awt.Font("Comic Sans MS", 0, 11)); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
