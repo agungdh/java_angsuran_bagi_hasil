@@ -197,6 +197,7 @@ public class Angsuran extends javax.swing.JFrame {
                     Denda.setText(ADHhelper.rupiah((int)denda));                
                     Total.setText(ADHhelper.rupiah((int)denda + totalSebelumDenda));                
                 } else {
+                    denda = 0;
                     Denda.setText("");                 
                     Total.setText(ADHhelper.rupiah(totalSebelumDenda));                
                 }
