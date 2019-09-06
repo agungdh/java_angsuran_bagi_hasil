@@ -164,7 +164,19 @@ public class Angsuran extends javax.swing.JFrame {
             Base.open();
             LazyList<AngsuranModel> angsurans = AngsuranModel.where("id_pembiayaan = ?", IDPembiayaan);
             jumlahAngsuran = angsurans.size();
-            angsuranKe = jumlahAngsuran + 1;
+            
+            
+            if (state.equals("index")) {
+                angsuranKe = jumlahAngsuran + 1;
+            } else if (state.equals("edit")) {
+                LazyList<AngsuranModel> ass = AngsuranModel.where("id <= ? AND id_pembiayaan = ?", ID, IDPembiayaan);
+                int sizeAss = ass.size();
+                angsuranKe = sizeAss;
+            } else {
+                JOptionPane.showMessageDialog(null, "Index/Edit ?");
+            }
+            
+            
             try {
                 periodeAngsuran_raw = ADHhelper.dateTambahBulan(ADHhelper.getTanggalFromDB(pembiayaan.getString("tanggal")), angsuranKe);
                 bulanJava = ADHhelper.dateGetMonth(periodeAngsuran_raw);
@@ -759,6 +771,7 @@ public class Angsuran extends javax.swing.JFrame {
             Base.close();
             
             Pembiayaan.setText(pembiayaan.getString("no_pembiayaan"));
+            cariPembiayaan();
             try {
                 Tanggal.setDate(ADHhelper.getTanggalFromDB(angsuran.getString("tanggal")));
                 tanggalAngsuran = ADHhelper.getTanggalFromDB(angsuran.getString("tanggal"));
