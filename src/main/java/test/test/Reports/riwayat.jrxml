@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="riwayat" language="groovy" pageWidth="500" pageHeight="595" orientation="Landscape" columnWidth="460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3fb5a3de-d8f2-4eff-bd5c-9b44d26b352d">
-	<property name="ireport.zoom" value="1.9487171000000154"/>
-	<property name="ireport.x" value="299"/>
-	<property name="ireport.y" value="428"/>
+	<property name="ireport.zoom" value="1.464100000000012"/>
+	<property name="ireport.x" value="47"/>
+	<property name="ireport.y" value="193"/>
 	<parameter name="no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -171,14 +171,6 @@ AND pb.no_pembiayaan = $P{no}]]>
 			<line>
 				<reportElement x="327" y="148" width="133" height="1" uuid="1cf92ded-a0c0-4e78-bd1c-85d5ea436c59"/>
 			</line>
-			<staticText>
-				<reportElement x="372" y="70" width="50" height="20" uuid="5cdd6b63-a079-4da0-9f2b-d8d39cef554e"/>
-				<text><![CDATA[Manager]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="359" y="129" width="81" height="20" uuid="ee40c6fe-9a08-4fa0-b50c-7775933e0e2f"/>
-				<text><![CDATA[Ahmad Sutiono]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>
