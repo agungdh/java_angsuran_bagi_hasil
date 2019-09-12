@@ -132,13 +132,13 @@ public class Pembiayaan extends javax.swing.JFrame {
         Anggota.removeAllItems();
         
         Base.open();
-        LazyList<AnggotaModel> anggotas = AnggotaModel.findAll();
+        LazyList<AnggotaModel> anggotas = AnggotaModel.findAll().orderBy("id_anggota DESC");
         Base.close();
         
         Base.open();
         for(AnggotaModel anggota : anggotas) {
             Base.close();
-            comboAnggotaID.add(Integer.parseInt(anggota.getString("id")));
+            comboAnggotaID.add(Integer.parseInt(anggota.getString("id_anggota")));
             Anggota.addItem(anggota.getString("nama"));
             Base.open();
         }
@@ -234,7 +234,7 @@ public class Pembiayaan extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findAll().orderBy("id DESC");
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findAll().orderBy("id_pembiayaan DESC");
         Base.close();
         
         loadTableHelper(pembiayaans);
@@ -242,7 +242,7 @@ public class Pembiayaan extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findBySQL("SELECT p.* FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id AND (p.no_pembiayaan LIKE ? OR a.nama LIKE ?) ORDER BY id DESC", '%' + cari + '%', '%' + cari + '%');
+        LazyList<PembiayaanModel> pembiayaans = PembiayaanModel.findBySQL("SELECT p.* FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id_anggota AND (p.no_pembiayaan LIKE ? OR a.nama LIKE ?) ORDER BY id_pembiayaan DESC", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
         loadTableHelper(pembiayaans);
@@ -732,7 +732,7 @@ public class Pembiayaan extends javax.swing.JFrame {
                     Base.close();
                     
                     Base.open();
-                    LazyList<PembiayaanModel> pembiayaansBelumLunas = PembiayaanModel.findBySQL("SELECT * FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id AND p.tanggal_pelunasan IS NULL AND a.id = ?", selectedComboAnggotaIndex);
+                    LazyList<PembiayaanModel> pembiayaansBelumLunas = PembiayaanModel.findBySQL("SELECT * FROM pembiayaan p, anggota a WHERE p.id_anggota = a.id_anggota AND p.tanggal_pelunasan IS NULL AND a.id_anggota = ?", selectedComboAnggotaIndex);
                     
                     if (pembiayaansBelumLunas.size() > 0) {
                         JOptionPane.showMessageDialog(null, "Anggota Sedang Mempunyai Pembiayaan Yang Belum Lunas !!!");
@@ -772,7 +772,7 @@ public class Pembiayaan extends javax.swing.JFrame {
                     PembiayaanModel pembiayaan = pembiayaans.get(0);
                     Base.close();
                     
-                    if ((int)pembiayaan.getInteger("id") == Integer.parseInt(ID)) {
+                    if ((int)pembiayaan.getInteger("id_pembiayaan") == Integer.parseInt(ID)) {
                         ubahData();
                         resetForm();
                         loadTable();

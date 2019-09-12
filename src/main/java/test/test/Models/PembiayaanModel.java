@@ -7,6 +7,7 @@ package test.test.Models;
 
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.BelongsTo;
+import org.javalite.activejdbc.annotations.IdName;
 import org.javalite.activejdbc.annotations.Table;
 
 /**
@@ -14,5 +15,6 @@ import org.javalite.activejdbc.annotations.Table;
  * @author user
  */
 @Table("pembiayaan")
+@IdName("id_pembiayaan")
 @BelongsTo(parent = AnggotaModel.class, foreignKeyName = "id_anggota")
 public class PembiayaanModel extends Model {}

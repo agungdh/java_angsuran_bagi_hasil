@@ -134,7 +134,7 @@ public class Anggota extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<AnggotaModel> anggotas = AnggotaModel.findAll().orderBy("id DESC");
+        LazyList<AnggotaModel> anggotas = AnggotaModel.findAll().orderBy("id_anggota DESC");
         Base.close();
         
         loadTableHelper(anggotas);
@@ -142,7 +142,7 @@ public class Anggota extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<AnggotaModel> anggotas = AnggotaModel.where("nama like ?", '%' + cari + '%').orderBy("id DESC");
+        LazyList<AnggotaModel> anggotas = AnggotaModel.where("nama like ?", '%' + cari + '%').orderBy("id_anggota DESC");
         Base.close();
         
         loadTableHelper(anggotas);

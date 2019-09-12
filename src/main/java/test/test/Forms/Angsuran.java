@@ -159,7 +159,7 @@ public class Angsuran extends javax.swing.JFrame {
             Bagi.setValue(basil);
             Nama.setText(anggota.getString("nama"));
             
-            IDPembiayaan = pembiayaan.getInteger("id");
+            IDPembiayaan = pembiayaan.getInteger("id_pembiayaan");
             
             Base.open();
             LazyList<AngsuranModel> angsurans = AngsuranModel.where("id_pembiayaan = ?", IDPembiayaan);
@@ -169,7 +169,7 @@ public class Angsuran extends javax.swing.JFrame {
             if (state.equals("index")) {
                 angsuranKe = jumlahAngsuran + 1;
             } else if (state.equals("edit")) {
-                LazyList<AngsuranModel> ass = AngsuranModel.where("id <= ? AND id_pembiayaan = ?", ID, IDPembiayaan);
+                LazyList<AngsuranModel> ass = AngsuranModel.where("id_angsuran <= ? AND id_pembiayaan = ?", ID, IDPembiayaan);
                 int sizeAss = ass.size();
                 angsuranKe = sizeAss;
             } else {
@@ -287,7 +287,7 @@ public class Angsuran extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<AngsuranModel> angsurans = AngsuranModel.findAll().orderBy("id DESC");
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findAll().orderBy("id_angsuran DESC");
         Base.close();
         
         loadTableHelper(angsurans);
@@ -295,7 +295,7 @@ public class Angsuran extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT a.* FROM pembiayaan p, angsuran a, anggota ag WHERE a.id_pembiayaan = p.id AND p.id_anggota = ag.id AND (p.no_pembiayaan like ? OR ag.nama like ?) ORDER BY id DESC", '%' + cari + '%', '%' + cari + '%');
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT a.* FROM pembiayaan p, angsuran a, anggota ag WHERE a.id_pembiayaan = p.id_pembiayaan AND p.id_anggota = ag.id_anggota AND (p.no_pembiayaan like ? OR ag.nama like ?) ORDER BY id_angsuran DESC", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
         loadTableHelper(angsurans);
@@ -832,7 +832,16 @@ public class Angsuran extends javax.swing.JFrame {
                 if (pembiayaans.size() > 0) {
                     Base.close();
                     
-                    ubahData();
+                    Base.open();
+                    PembiayaanModel pby = PembiayaanModel.findById(IDPembiayaan);
+                    Base.close();
+                    
+                    if (pby.getString("tanggal_pelunasan") == null) {
+                        ubahData();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Pembiayaan Sudah Lunas !!!");
+                    }
+                    
                     resetForm();
                     loadTable();
                     
@@ -919,7 +928,7 @@ public class Angsuran extends javax.swing.JFrame {
 
                     if (sisa >= 2) {
                         Base.open();
-                        LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? ORDER BY id DESC LIMIT 2", IDPembiayaan);
+                        LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? ORDER BY id_pembiayaan DESC LIMIT 2", IDPembiayaan);
                         Base.close();
 
                         Base.open();

@@ -7,6 +7,7 @@ package test.test.Models;
 
 import org.javalite.activejdbc.Model;
 import org.javalite.activejdbc.annotations.BelongsTo;
+import org.javalite.activejdbc.annotations.IdName;
 import org.javalite.activejdbc.annotations.Table;
 
 /**
@@ -14,4 +15,5 @@ import org.javalite.activejdbc.annotations.Table;
  * @author user
  */
 @Table("anggota")
+@IdName("id_anggota")
 public class AnggotaModel extends Model {}
