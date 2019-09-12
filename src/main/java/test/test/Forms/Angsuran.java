@@ -287,7 +287,7 @@ public class Angsuran extends javax.swing.JFrame {
     
     private void loadTable() {
         Base.open();
-        LazyList<AngsuranModel> angsurans = AngsuranModel.findAll();
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findAll().orderBy("id DESC");
         Base.close();
         
         loadTableHelper(angsurans);
@@ -295,7 +295,7 @@ public class Angsuran extends javax.swing.JFrame {
 
     private void loadTable(String cari) {
         Base.open();
-        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT a.* FROM pembiayaan p, angsuran a, anggota ag WHERE a.id_pembiayaan = p.id AND p.id_anggota = ag.id AND (p.no_pembiayaan like ? OR ag.nama like ?)", '%' + cari + '%', '%' + cari + '%');
+        LazyList<AngsuranModel> angsurans = AngsuranModel.findBySQL("SELECT a.* FROM pembiayaan p, angsuran a, anggota ag WHERE a.id_pembiayaan = p.id AND p.id_anggota = ag.id AND (p.no_pembiayaan like ? OR ag.nama like ?) ORDER BY id DESC", '%' + cari + '%', '%' + cari + '%');
         Base.close();
         
         loadTableHelper(angsurans);
