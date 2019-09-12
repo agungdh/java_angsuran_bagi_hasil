@@ -919,7 +919,7 @@ public class Angsuran extends javax.swing.JFrame {
 
                     if (sisa >= 2) {
                         Base.open();
-                        LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? LIMIT 2", IDPembiayaan);
+                        LazyList<AngsuranModel> angsuransCheck = AngsuranModel.findBySQL("SELECT * FROM angsuran WHERE id_pembiayaan = ? ORDER BY id DESC LIMIT 2", IDPembiayaan);
                         Base.close();
 
                         Base.open();
