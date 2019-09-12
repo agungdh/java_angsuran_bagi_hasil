@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1	Database: intan
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.3.16-MariaDB
--- Date: Tue, 03 Sep 2019 07:38:24 +0200
+-- Date: Thu, 12 Sep 2019 07:32:07 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,7 +59,7 @@ CREATE TABLE `anggota` (
   `pekerjaan` varchar(191) NOT NULL,
   `no_hp` varchar(191) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,12 +69,12 @@ CREATE TABLE `anggota` (
 LOCK TABLES `anggota` WRITE;
 /*!40000 ALTER TABLE `anggota` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `anggota` VALUES (4,'Test','124124','124124','124124','124124'),(5,'AFASF','asfafas','fasfas','fasfas','fasfasf');
+INSERT INTO `anggota` VALUES (7,'aulia','metro','1234576','kuliah','086521'),(10,'intan','metro','1234567890','mahasiswa','085766747310'),(15,'fahmi','gaya baru','12345678','mahasiswa','08756652'),(16,'ani','metro','12345678','dagang','086527432'),(17,'endang','lampung','1807065212760004','pedagang','082372173713'),(18,'dedi irawan','metro','18065331','dosen','08576666'),(19,'aaaaaa','jdsfjks','jgd','sjfjsd','jdsds');
 /*!40000 ALTER TABLE `anggota` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `anggota` with 2 row(s)
+-- Dumped table `anggota` with 7 row(s)
 --
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `angsuran` (
   PRIMARY KEY (`id`),
   KEY `id_pembiayaan` (`id_pembiayaan`),
   CONSTRAINT `angsuran_ibfk_1` FOREIGN KEY (`id_pembiayaan`) REFERENCES `pembiayaan` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=613 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=678 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,12 +102,12 @@ CREATE TABLE `angsuran` (
 LOCK TABLES `angsuran` WRITE;
 /*!40000 ALTER TABLE `angsuran` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `angsuran` VALUES (599,19,'2019-09-25',666666,50000),(600,19,'2019-09-20',666666,50000),(604,19,'2019-09-05',666666,50000),(605,21,'2019-09-05',60606,0),(606,21,'2019-09-05',60606,0),(607,21,'2019-09-05',60606,6060),(608,21,'2019-09-05',60606,6060),(609,22,'2019-09-05',560605,0),(610,22,'2019-09-05',560605,0),(611,22,'2019-09-05',560605,56060),(612,22,'2019-09-05',560605,56060);
+INSERT INTO `angsuran` VALUES (647,30,'2019-10-02',1000000,250000),(648,30,'2019-11-05',1000000,250000),(658,30,'2020-01-05',1000000,250000),(662,35,'2019-10-10',3333333,0),(663,35,'2019-11-04',3333333,0),(664,35,'2019-11-04',3333333,250000),(665,38,'2019-10-10',416666,0),(666,38,'2019-11-20',416666,0),(667,38,'2019-12-02',416666,125000),(668,38,'2019-12-02',416666,125000),(669,38,'2019-12-02',416666,125000),(670,38,'2019-12-02',416666,125000),(671,38,'2019-12-02',416666,125000),(672,38,'2019-12-02',416666,125000),(673,38,'2019-12-02',416666,125000),(674,38,'2019-12-02',416666,125000),(675,38,'2019-12-02',416666,125000),(676,38,'2019-12-02',416666,125000),(677,39,'2019-10-09',1000000,125000);
 /*!40000 ALTER TABLE `angsuran` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `angsuran` with 11 row(s)
+-- Dumped table `angsuran` with 19 row(s)
 --
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `pembiayaan` (
   PRIMARY KEY (`id`),
   KEY `id_anggota` (`id_anggota`),
   CONSTRAINT `pembiayaan_ibfk_1` FOREIGN KEY (`id_anggota`) REFERENCES `anggota` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,12 +142,12 @@ CREATE TABLE `pembiayaan` (
 LOCK TABLES `pembiayaan` WRITE;
 /*!40000 ALTER TABLE `pembiayaan` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `pembiayaan` VALUES (19,5,'111','2019-07-31',3,2000000,'2019-10-31',150000,666666,75000,'Motor','2019-09-03'),(21,4,'1','2019-09-12',4,242424,'2020-01-12',24242,60606,124120,'14124','2019-09-03'),(22,5,'12','2019-09-06',4,2242422,'2020-01-06',224242,560605,50000,'test','2019-09-03');
+INSERT INTO `pembiayaan` VALUES (30,7,'001','2019-09-06',10,10000000,'2020-07-06',2500000,1000000,75000,'kulkas',NULL),(35,15,'004','2019-09-09',3,10000000,'2019-12-09',750000,3333333,75000,'ktp','2019-09-09'),(36,16,'005','2019-09-09',5,10000000,'2020-02-09',1250000,2000000,65000,'STNK Motor','2019-09-09'),(37,17,'006','2019-09-10',12,5000000,'2020-09-10',1500000,416666,75000,'SHM',NULL),(38,18,'008','2019-09-10',12,5000000,'2020-09-10',1500000,416666,75000,'BPKB Motor','2019-09-10'),(39,16,'009','2019-09-10',5,5000000,'2020-02-10',625000,1000000,65000,'khh',NULL);
 /*!40000 ALTER TABLE `pembiayaan` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `pembiayaan` with 3 row(s)
+-- Dumped table `pembiayaan` with 6 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -159,4 +159,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 03 Sep 2019 07:38:24 +0200
+-- Dump completed on: Thu, 12 Sep 2019 07:32:07 +0200
