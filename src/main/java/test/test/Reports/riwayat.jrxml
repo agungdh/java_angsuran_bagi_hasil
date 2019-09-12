@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="riwayat" language="groovy" pageWidth="500" pageHeight="595" orientation="Landscape" columnWidth="460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3fb5a3de-d8f2-4eff-bd5c-9b44d26b352d">
-	<property name="ireport.zoom" value="1.6105100000000105"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.9487171000000154"/>
+	<property name="ireport.x" value="299"/>
+	<property name="ireport.y" value="428"/>
 	<parameter name="no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -10,11 +10,11 @@
 		<![CDATA[SELECT ar.*, ag.nama, pb.no_pembiayaan,
 concat(lpad(day(ar.tanggal), 2, 0), '-', lpad(month(ar.tanggal), 2, 0), '-', year(ar.tanggal)) tanggalparsed
 FROM angsuran ar, anggota ag, pembiayaan pb
-WHERE ar.id_pembiayaan = pb.id
-AND pb.id_anggota = ag.id
+WHERE ar.id_pembiayaan = pb.id_pembiayaan
+AND pb.id_anggota = ag.id_anggota
 AND pb.no_pembiayaan = $P{no}]]>
 	</queryString>
-	<field name="id" class="java.lang.Integer">
+	<field name="id_angsuran" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="id_pembiayaan" class="java.lang.Integer">
@@ -162,4 +162,23 @@ AND pb.no_pembiayaan = $P{no}]]>
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="149">
+			<staticText>
+				<reportElement x="327" y="50" width="144" height="20" uuid="fb95d7e4-aeed-4bcd-bddc-d3044a0af8bb"/>
+				<text><![CDATA[Metro, .......................................]]></text>
+			</staticText>
+			<line>
+				<reportElement x="327" y="148" width="133" height="1" uuid="1cf92ded-a0c0-4e78-bd1c-85d5ea436c59"/>
+			</line>
+			<staticText>
+				<reportElement x="372" y="70" width="50" height="20" uuid="5cdd6b63-a079-4da0-9f2b-d8d39cef554e"/>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="129" width="81" height="20" uuid="ee40c6fe-9a08-4fa0-b50c-7775933e0e2f"/>
+				<text><![CDATA[Ahmad Sutiono]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
 </jasperReport>

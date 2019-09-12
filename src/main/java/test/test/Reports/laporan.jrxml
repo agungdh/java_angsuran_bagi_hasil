@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan" language="groovy" pageWidth="586" pageHeight="595" orientation="Landscape" columnWidth="546" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
-	<property name="ireport.zoom" value="0.9090909090909123"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="2.593742460100013"/>
+	<property name="ireport.x" value="857"/>
+	<property name="ireport.y" value="691"/>
 	<parameter name="txt_tggl_a" class="java.lang.String"/>
 	<parameter name="txt_tggl_b" class="java.lang.String"/>
 	<parameter name="tggl_a" class="java.lang.String">
@@ -21,12 +21,12 @@ WHERE tanggal BETWEEN $P{tggl_a} AND $P{tggl_b}) sumbasil,
 FROM angsuran
 WHERE tanggal BETWEEN $P{tggl_a} AND $P{tggl_b}) sumpokok
 FROM pembiayaan p, angsuran a, anggota ag
-WHERE a.id_pembiayaan = p.id
-AND p.id_anggota = ag.id
+WHERE a.id_pembiayaan = p.id_pembiayaan
+AND p.id_anggota = ag.id_anggota
 AND a.tanggal BETWEEN $P{tggl_a} AND $P{tggl_b}
 ORDER BY a.tanggal ASC]]>
 	</queryString>
-	<field name="id" class="java.lang.Integer">
+	<field name="id_angsuran" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="id_pembiayaan" class="java.lang.Integer">
@@ -189,7 +189,7 @@ ORDER BY a.tanggal ASC]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="50">
+		<band height="160">
 			<rectangle>
 				<reportElement x="211" y="0" width="109" height="20" uuid="e94736ad-80ac-4374-aeab-3d98089d3fda"/>
 			</rectangle>
@@ -220,6 +220,21 @@ ORDER BY a.tanggal ASC]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sumbasil}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="445" y="140" width="81" height="20" uuid="ea0a8c0a-2ad2-4314-98b0-33dd61141319"/>
+				<text><![CDATA[Ahmad Sutiono]]></text>
+			</staticText>
+			<line>
+				<reportElement x="413" y="159" width="133" height="1" uuid="edd1e6a8-637e-4e12-972e-984082c6ac47"/>
+			</line>
+			<staticText>
+				<reportElement x="458" y="81" width="50" height="20" uuid="9f3a15ea-8100-48d4-9b2b-9dc99ef3b62a"/>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="61" width="144" height="20" uuid="b09dee6d-f82a-44d1-a3c2-18d27c50dd9d"/>
+				<text><![CDATA[Metro, ......................................]]></text>
+			</staticText>
 		</band>
 	</columnFooter>
 </jasperReport>
