@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="laporan" language="groovy" pageWidth="586" pageHeight="595" orientation="Landscape" columnWidth="546" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
-	<property name="ireport.zoom" value="1.0000000000000056"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.6105100000000099"/>
+	<property name="ireport.x" value="262"/>
+	<property name="ireport.y" value="286"/>
 	<parameter name="txt_tggl_a" class="java.lang.String"/>
 	<parameter name="txt_tggl_b" class="java.lang.String"/>
 	<parameter name="tggl_a" class="java.lang.String">
@@ -204,7 +204,7 @@ ORDER BY a.id_angsuran ASC]]>
 			<rectangle>
 				<reportElement x="321" y="0" width="109" height="20" uuid="9d613acf-7f92-4a58-9832-c95b9ae77dec"/>
 			</rectangle>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="321" y="0" width="109" height="20" uuid="db75986c-1e10-45af-b535-0ae733e65964"/>
 				<textElement>
 					<font isBold="true"/>
@@ -214,7 +214,7 @@ ORDER BY a.id_angsuran ASC]]>
 			<rectangle>
 				<reportElement x="430" y="0" width="116" height="20" uuid="eb6e228c-2337-49a9-9365-1dcbd3869274"/>
 			</rectangle>
-			<textField>
+			<textField pattern="#,##0">
 				<reportElement x="430" y="0" width="116" height="20" uuid="ce647294-a63e-4574-a9d2-bac4ea0bfbca"/>
 				<textElement>
 					<font isBold="true"/>
@@ -233,11 +233,11 @@ ORDER BY a.id_angsuran ASC]]>
 				<text><![CDATA[Manager]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="413" y="61" width="33" height="20" uuid="b09dee6d-f82a-44d1-a3c2-18d27c50dd9d"/>
+				<reportElement x="433" y="61" width="33" height="20" uuid="b09dee6d-f82a-44d1-a3c2-18d27c50dd9d"/>
 				<text><![CDATA[Metro,]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="446" y="61" width="100" height="20" uuid="b0595ea9-d0f5-4527-ad65-87ece73b85d8"/>
+				<reportElement x="466" y="61" width="80" height="20" uuid="b0595ea9-d0f5-4527-ad65-87ece73b85d8"/>
 				<textFieldExpression><![CDATA[$P{tgglnow}]]></textFieldExpression>
 			</textField>
 		</band>
