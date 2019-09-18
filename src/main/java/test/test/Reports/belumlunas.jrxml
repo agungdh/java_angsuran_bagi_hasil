@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="belumlunas" language="groovy" pageWidth="500" pageHeight="595" orientation="Landscape" columnWidth="460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83af2b50-318f-4f0b-be55-db83171c0f1e">
-	<property name="ireport.zoom" value="3.452271214393119"/>
-	<property name="ireport.x" value="1081"/>
-	<property name="ireport.y" value="726"/>
+	<property name="ireport.zoom" value="1.3310000000000073"/>
+	<property name="ireport.x" value="66"/>
+	<property name="ireport.y" value="50"/>
+	<parameter name="tgglnow" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT a.nama, p.basil, p.pokok, p.basil + p.pokok total
 FROM pembiayaan p, anggota a
@@ -145,13 +146,17 @@ AND p.tanggal_pelunasan IS NULL]]>
 				<reportElement x="326" y="122" width="133" height="1" uuid="3ff7ec36-aa29-46fc-a2df-63f9958126a7"/>
 			</line>
 			<staticText>
-				<reportElement x="326" y="24" width="144" height="20" uuid="d40c7b61-d38c-44d4-ab92-3ccacfe8e8e2"/>
-				<text><![CDATA[Metro, ...................................]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="358" y="103" width="81" height="20" uuid="562ba2c2-cc40-4d5a-9a51-6a341f55e01f"/>
 				<text><![CDATA[Ahmad Sutiono]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="325" y="24" width="33" height="20" uuid="a0658a73-3fd1-4cf8-a88b-d153f1fa2773"/>
+				<text><![CDATA[Metro,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="358" y="24" width="100" height="20" uuid="502a552c-e0a5-407e-8936-35d26b1bd262"/>
+				<textFieldExpression><![CDATA[$P{tgglnow}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>
